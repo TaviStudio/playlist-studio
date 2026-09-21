@@ -602,6 +602,7 @@
     @media (max-width: 640px) {
       .nav {
         min-height: 62px;
+        gap: 12px;
       }
 
       .brand span {
@@ -609,15 +610,12 @@
       }
 
       .nav-links {
-        gap: 14px;
+        min-width: 0;
+        gap: clamp(8px, 2.8vw, 14px);
       }
 
       .nav-links a {
-        font-size: 0.84rem;
-      }
-
-      .nav-links a:first-child {
-        display: none;
+        font-size: clamp(0.72rem, 3.4vw, 0.84rem);
       }
 
       .hero {
@@ -730,8 +728,8 @@
             <h3>Add YouTube links</h3>
 
             <p>
-              Save links in your playlists. Playlist Studio identifies
-              available video metadata and suggests a clean artist and song title.
+              Verify eligible videos, keep the original YouTube title or choose
+              your own name, and save the link directly to your playlists.
             </p>
           </article>
 
@@ -904,8 +902,8 @@
               the entire local library, delete Playlist Studio from the device
               and manage any device or iCloud backups in Apple’s settings.
               You can also revoke microphone access in System Settings and
-              disable in-app YouTube playback from Playlist Studio’s Privacy
-              screen.
+              turn off <strong>Enable YouTube Services</strong> on Playlist
+              Studio’s Privacy screen.
             </p>
           </details>
         </div>
@@ -915,7 +913,7 @@
     <section id="privacy" class="section alt" aria-labelledby="privacy-title">
       <div class="shell legal-layout">
         <div class="sticky-intro">
-          <p class="eyebrow">Last updated September 21, 2026</p>
+          <p class="eyebrow">Last updated September 22, 2026</p>
           <h2 id="privacy-title">Privacy Policy</h2>
 
           <p>
@@ -987,7 +985,7 @@
             </li>
 
             <li>
-              app preferences, including your in-app YouTube playback choice;
+              app preferences, including your YouTube Services choice;
               and
             </li>
 
@@ -1064,24 +1062,39 @@
           <h4>Information sent to and received from YouTube</h4>
 
           <p>
-            When you add a YouTube link, Playlist Studio sends the video
-            identifier to the YouTube Data API to retrieve information such as
-            the video title, channel information, thumbnail, embedding status,
-            and whether the video is marked as made for kids. The app uses this
-            information to verify the link, suggest a formatted artist and song
-            title, and decide whether in-app playback is permitted.
+            Only after you enable YouTube Services, Playlist Studio sends a
+            video identifier to the YouTube Data API when it needs to verify a
+            link. The app retrieves the original video title, thumbnail,
+            category, embedding status, and whether the video is marked as made
+            for kids. It uses this information to show you the video being
+            added, warn about unexpected content, and determine whether
+            in-app playback is permitted.
           </p>
 
           <p>
-            When you allow and use in-app playback, Playlist Studio loads
-            YouTube’s official IFrame Player in a web view. Google or YouTube
-            may receive information normally involved in an internet and
-            embedded-player request, including your IP address, device and
-            browser characteristics, app or request identifiers, cookies or
-            similar technologies, video identifiers, and player interactions
-            or playback information. YouTube may display its own content,
-            branding, recommendations, or advertising according to its policies
-            and your Google or YouTube settings.
+            The original title is displayed before you add the link. If you
+            choose <strong>Use Original Title</strong>, Playlist Studio stores
+            that title locally and refreshes it through the YouTube Data API
+            before the stored copy reaches 30 days. If a stored original title
+            expires before a refresh succeeds, the app replaces it with a
+            generic label until it can be refreshed. If you choose
+            <strong>Rename</strong>, only your custom title is used and it is
+            never overwritten by YouTube. Thumbnails are displayed temporarily
+            during verification and are not saved to your library.
+          </p>
+
+          <p>
+            When you play a saved YouTube link in the app, Playlist Studio loads
+            YouTube’s official IFrame Player in Privacy Enhanced Mode inside a
+            web view. Google or YouTube may receive information normally
+            involved in an internet, API, or embedded-player request, including
+            your IP address, device or browser characteristics, app or request
+            identifiers, local storage or cookie information, video identifiers,
+            and player interactions or playback information. Privacy Enhanced
+            Mode prevents a view in Playlist Studio from being used to
+            personalize your YouTube experience or advertising outside the app.
+            YouTube may still show non-personalized advertising, branding,
+            recommendations, or other content in the player under its policies.
           </p>
 
           <p>
@@ -1094,13 +1107,13 @@
           <h4>Consent and control</h4>
 
           <p>
-            Before embedded YouTube playback, the app asks for your choice.
-            You can disable <strong>Allow in-app YouTube playback</strong>
-            at any time on the Privacy screen. When disabled, new embedded
-            playback is stopped and YouTube links open only in the official
-            YouTube app or website. Metadata requests needed to identify and
-            validate a YouTube link may still occur when you choose to add
-            such a link.
+            Before the app makes its first YouTube Data API request or loads the
+            embedded player, it presents the YouTube Services consent screen.
+            You can withdraw that permission at any time by turning off
+            <strong>Enable YouTube Services</strong> on the Privacy screen.
+            When disabled, Playlist Studio makes no new YouTube Data API or
+            embedded-player requests. Saved YouTube links remain stored locally
+            and can still be opened in the official YouTube app or website.
           </p>
 
           <p>
@@ -1227,7 +1240,8 @@
 
           <p>
             Where laws such as the GDPR require a legal basis, processing may
-            rely on: your consent for microphone access and embedded YouTube
+            rely on: your consent for microphone access and YouTube Services,
+            including link verification, metadata retrieval, and embedded
             playback; performance of the service you request when you import,
             organize, or play content; legitimate interests in responding to
             support requests and protecting the service; and compliance with
@@ -1286,8 +1300,9 @@
             </li>
 
             <li>
-              Disable in-app YouTube playback from Playlist Studio’s Privacy
-              screen.
+              Turn off <strong>Enable YouTube Services</strong> on Playlist
+              Studio’s Privacy screen to stop new YouTube Data API and
+              embedded-player requests.
             </li>
 
             <li>
@@ -1366,7 +1381,7 @@
     <section id="terms" class="section" aria-labelledby="terms-title">
       <div class="shell legal-layout">
         <div class="sticky-intro">
-          <p class="eyebrow">Last updated September 21, 2026</p>
+          <p class="eyebrow">Last updated September 22, 2026</p>
           <h2 id="terms-title">Terms of Use</h2>
 
           <p>
@@ -1408,7 +1423,10 @@
 
           <p>
             YouTube features are provided through YouTube API Services and the
-            official embedded player. Your use is also governed by the
+            official embedded player in Privacy Enhanced Mode. Before the app
+            accesses those services, it asks you to agree to the Privacy Policy
+            and YouTube Terms of Service. You can withdraw that permission from
+            the app’s Privacy screen. Your use is also governed by the
             <a
               href="https://www.youtube.com/static?template=terms"
               rel="noopener noreferrer"
