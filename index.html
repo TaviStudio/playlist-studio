@@ -1,0 +1,1490 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#050611">
+  <meta name="description" content="Playlist Studio brings YouTube links, imported audio files, and personal recordings together in one simple library.">
+  <title>Playlist Studio: Music Hub</title>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%23ff2d8d'/%3E%3Cstop offset='.52' stop-color='%23a53cff'/%3E%3Cstop offset='1' stop-color='%2300a9ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='15' fill='%23090b20'/%3E%3Cpath d='M26 17v29a7 7 0 1 1-4-6.3V22l27-6v24a7 7 0 1 1-4-6.3V12z' fill='url(%23g)'/%3E%3Ccircle cx='10' cy='22' r='2.5' fill='%23ff2d8d'/%3E%3Ccircle cx='10' cy='31' r='2.5' fill='%23a53cff'/%3E%3Ccircle cx='10' cy='40' r='2.5' fill='%2300a9ff'/%3E%3C/svg%3E">
+
+  <style>
+    :root {
+      --bg: #050611;
+      --bg-deep: #02030a;
+      --surface: rgba(17, 20, 45, 0.78);
+      --surface-strong: #10142d;
+      --line: rgba(255, 255, 255, 0.11);
+      --text: #f7f8ff;
+      --muted: #aeb3c8;
+      --pink: #ff2d8d;
+      --purple: #a64dff;
+      --blue: #29a8ff;
+      --max: 1120px;
+      --radius: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 12%, rgba(255, 45, 141, 0.16), transparent 29rem),
+        radial-gradient(circle at 88% 14%, rgba(41, 168, 255, 0.16), transparent 31rem),
+        linear-gradient(180deg, var(--bg-deep), var(--bg) 42%, #03040c);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: #70c2ff;
+      text-underline-offset: 0.2em;
+    }
+
+    a:hover {
+      color: #a5dcff;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .skip-link {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 999;
+      transform: translateY(-160%);
+      padding: 10px 14px;
+      border-radius: 12px;
+      color: #050611;
+      background: #fff;
+      font-weight: 700;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid var(--line);
+      background: rgba(3, 4, 12, 0.78);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      width: min(calc(100% - 32px), var(--max));
+      min-height: 68px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      color: var(--text);
+      font-weight: 760;
+      text-decoration: none;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+    }
+
+    .brand img {
+      width: 38px;
+      height: 38px;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.93rem;
+      font-weight: 650;
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    main {
+      overflow: hidden;
+    }
+
+    section {
+      scroll-margin-top: 88px;
+    }
+
+    .shell {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .hero {
+      min-height: 690px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr);
+      align-items: center;
+      gap: clamp(42px, 7vw, 100px);
+      padding: 92px 0 86px;
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #d3b7ff;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin-top: 0;
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+    }
+
+    h1 {
+      max-width: 720px;
+      margin-bottom: 22px;
+      font-size: clamp(3rem, 7.4vw, 6.25rem);
+      font-weight: 850;
+    }
+
+    .gradient-text {
+      background: linear-gradient(
+        100deg,
+        #fff 4%,
+        #ff9bc9 38%,
+        #bf8cff 64%,
+        #78cfff 96%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-copy {
+      max-width: 680px;
+      margin: 0 0 30px;
+      color: var(--muted);
+      font-size: clamp(1.08rem, 2vw, 1.3rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 19px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.05);
+      font-weight: 740;
+      text-decoration: none;
+      transition:
+        transform 160ms ease,
+        background 160ms ease,
+        border-color 160ms ease;
+    }
+
+    .button.primary {
+      border-color: transparent;
+      background: linear-gradient(
+        100deg,
+        var(--pink),
+        var(--purple) 52%,
+        var(--blue)
+      );
+      box-shadow: 0 14px 36px rgba(93, 65, 255, 0.25);
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.24);
+    }
+
+    .button:focus-visible,
+    a:focus-visible,
+    summary:focus-visible {
+      outline: 3px solid #8dd3ff;
+      outline-offset: 4px;
+    }
+
+    .hero-art {
+      position: relative;
+      min-height: 430px;
+      display: grid;
+      place-items: center;
+      isolation: isolate;
+    }
+
+    .hero-art::before {
+      content: "";
+      position: absolute;
+      width: min(86vw, 430px);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: conic-gradient(
+        from 200deg,
+        var(--pink),
+        var(--purple),
+        var(--blue),
+        var(--pink)
+      );
+      filter: blur(42px);
+      opacity: 0.34;
+      z-index: -2;
+    }
+
+    .hero-art::after {
+      content: "";
+      position: absolute;
+      width: min(70vw, 360px);
+      aspect-ratio: 1;
+      border-radius: 33%;
+      background: rgba(4, 6, 17, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow:
+        inset 0 0 70px rgba(92, 54, 255, 0.12),
+        0 30px 90px rgba(0, 0, 0, 0.45);
+      transform: rotate(8deg);
+      z-index: -1;
+    }
+
+    .hero-art img {
+      width: min(65vw, 320px);
+      height: min(65vw, 320px);
+      object-fit: contain;
+      filter: drop-shadow(0 25px 40px rgba(0, 0, 0, 0.45));
+    }
+
+    .section {
+      padding: 96px 0;
+    }
+
+    .section.alt {
+      border-block: 1px solid var(--line);
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.025),
+        rgba(255, 255, 255, 0.008)
+      );
+    }
+
+    .section-heading {
+      max-width: 760px;
+      margin-bottom: 38px;
+    }
+
+    .section-heading h2 {
+      margin-bottom: 15px;
+      font-size: clamp(2.1rem, 4.8vw, 3.8rem);
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(
+        145deg,
+        rgba(18, 21, 48, 0.88),
+        rgba(8, 10, 25, 0.82)
+      );
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.16);
+    }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+      border-radius: 13px;
+      color: #fff;
+      background: linear-gradient(
+        135deg,
+        rgba(255, 45, 141, 0.92),
+        rgba(116, 70, 255, 0.92) 58%,
+        rgba(41, 168, 255, 0.92)
+      );
+      font-size: 1.15rem;
+      font-weight: 850;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 1.25rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .truth-panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 22px;
+    }
+
+    .truth-panel .card:first-child {
+      border-color: rgba(41, 168, 255, 0.25);
+    }
+
+    .truth-panel .card:last-child {
+      border-color: rgba(255, 45, 141, 0.23);
+    }
+
+    .check-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .check-list li {
+      position: relative;
+      margin: 12px 0;
+      padding-left: 28px;
+      color: var(--muted);
+    }
+
+    .check-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #63c2ff;
+      font-weight: 900;
+    }
+
+    .support-layout,
+    .legal-layout {
+      display: grid;
+      grid-template-columns: 0.72fr 1.28fr;
+      gap: clamp(30px, 6vw, 84px);
+      align-items: start;
+    }
+
+    .sticky-intro {
+      position: sticky;
+      top: 104px;
+    }
+
+    .sticky-intro h2 {
+      margin-bottom: 14px;
+      font-size: clamp(2rem, 4vw, 3.15rem);
+    }
+
+    .sticky-intro p {
+      color: var(--muted);
+    }
+
+    .contact-card {
+      margin-top: 24px;
+      padding: 21px;
+    }
+
+    .contact-card strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .contact-card p {
+      margin: 0 0 14px;
+      color: var(--muted);
+    }
+
+    .faq {
+      border-top: 1px solid var(--line);
+    }
+
+    details {
+      border-bottom: 1px solid var(--line);
+    }
+
+    summary {
+      cursor: pointer;
+      padding: 22px 42px 22px 0;
+      color: var(--text);
+      font-weight: 720;
+      list-style: none;
+      position: relative;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "+";
+      position: absolute;
+      right: 8px;
+      top: 18px;
+      color: #78cfff;
+      font-size: 1.35rem;
+    }
+
+    details[open] summary::after {
+      content: "−";
+    }
+
+    details p {
+      margin: -4px 0 22px;
+      color: var(--muted);
+    }
+
+    .legal-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .legal-nav a {
+      padding: 7px 11px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.84rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .legal-copy h3 {
+      margin: 40px 0 12px;
+      font-size: 1.45rem;
+      scroll-margin-top: 94px;
+    }
+
+    .legal-copy h3:first-child {
+      margin-top: 0;
+    }
+
+    .legal-copy h4 {
+      margin: 25px 0 7px;
+      font-size: 1.05rem;
+    }
+
+    .legal-copy p,
+    .legal-copy li {
+      color: var(--muted);
+    }
+
+    .legal-copy ul {
+      padding-left: 1.25rem;
+    }
+
+    .legal-copy strong {
+      color: var(--text);
+    }
+
+    .notice {
+      margin: 22px 0;
+      padding: 18px 20px;
+      border-left: 3px solid var(--blue);
+      border-radius: 0 16px 16px 0;
+      background: rgba(41, 168, 255, 0.08);
+      color: #d9ecff;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 30px 0 46px;
+      color: var(--muted);
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    @media (max-width: 860px) {
+      .hero {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        padding-top: 70px;
+        text-align: center;
+      }
+
+      .hero-copy {
+        margin-inline: auto;
+      }
+
+      .hero-actions {
+        justify-content: center;
+      }
+
+      .hero-art {
+        min-height: 350px;
+        order: -1;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .support-layout,
+      .legal-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .sticky-intro {
+        position: static;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        min-height: 62px;
+      }
+
+      .brand span {
+        display: none;
+      }
+
+      .nav-links {
+        gap: 14px;
+      }
+
+      .nav-links a {
+        font-size: 0.84rem;
+      }
+
+      .nav-links a:first-child {
+        display: none;
+      }
+
+      .hero {
+        padding: 48px 0 64px;
+        gap: 26px;
+      }
+
+      .hero-art {
+        min-height: 285px;
+      }
+
+      .section {
+        padding: 72px 0;
+      }
+
+      .feature-grid,
+      .truth-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        padding: 22px;
+      }
+
+      .footer-row {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="Playlist Studio home">
+        <img src="StudioMark.png" alt="" width="38" height="38">
+        <span>Playlist Studio</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#support">Support</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#terms">Terms</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section id="top" class="shell hero" aria-labelledby="hero-title">
+      <div>
+        <p class="eyebrow">YouTube links · Imports · Recordings</p>
+
+        <h1 id="hero-title">
+          Your Music. <span class="gradient-text">One Place.</span>
+        </h1>
+
+        <p class="hero-copy">
+          Create personal playlists with music from different sources.
+          Add YouTube links, import audio files, or make your own recordings,
+          then organize everything in one simple Library.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button primary" href="#features">Explore features</a>
+          <a class="button" href="#support">Get support</a>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-label="Playlist Studio app icon">
+        <img
+          src="StudioMark.png"
+          alt="Playlist Studio colorful music note logo"
+          width="320"
+          height="320"
+        >
+      </div>
+    </section>
+
+    <section id="features" class="section alt" aria-labelledby="features-title">
+      <div class="shell">
+        <div class="section-heading">
+          <p class="eyebrow">Create your mix. Press play.</p>
+          <h2 id="features-title">A personal library built your way.</h2>
+
+          <p>
+            Bring your sources together, keep playlists organized,
+            and play local audio in the background.
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">▶</div>
+            <h3>Add YouTube links</h3>
+
+            <p>
+              Save links in your playlists. Playlist Studio identifies
+              available video metadata and suggests a clean artist and song title.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">↓</div>
+            <h3>Import audio files</h3>
+
+            <p>
+              Choose audio from Files. Processing happens on your device
+              and the imported copy stays in the app’s private storage.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">●</div>
+            <h3>Make recordings</h3>
+
+            <p>
+              Record personal audio with your permission and place it
+              directly into your library and playlists.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">≡</div>
+            <h3>Organize simply</h3>
+
+            <p>
+              Search, reorder, rename, and move songs between playlists.
+              Play a full playlist whenever you are ready.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">♫</div>
+            <h3>Keep local audio playing</h3>
+
+            <p>
+              Imported files and personal recordings can continue
+              in the background and from the Lock Screen.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">∞</div>
+            <h3>One-time unlock</h3>
+
+            <p>
+              The free Library holds up to 50 songs. Unlock Unlimited Library
+              with one in-app purchase. No registration and no subscription.
+            </p>
+          </article>
+        </div>
+
+        <div class="truth-panel">
+          <article class="card">
+            <h3>Designed with privacy in mind</h3>
+
+            <ul class="check-list">
+              <li>No Playlist Studio account</li>
+              <li>No developer analytics or tracking SDK</li>
+              <li>No ads served by Playlist Studio</li>
+              <li>Your library and audio stay on your device</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>About YouTube playback</h3>
+
+            <p>
+              YouTube playback requires an internet connection and a visible
+              player. Background playback is available for local audio, but not
+              for YouTube videos. Some videos must open in the YouTube app or
+              website because of YouTube or uploader restrictions.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="support" class="section" aria-labelledby="support-title">
+      <div class="shell support-layout">
+        <div class="sticky-intro">
+          <p class="eyebrow">Help</p>
+          <h2 id="support-title">Playlist Studio Support</h2>
+
+          <p>
+            Find quick answers below. If you still need help, email us and
+            include your device model, iOS or iPadOS version, app version,
+            and the steps that led to the issue.
+          </p>
+
+          <div class="card contact-card">
+            <strong>Contact support</strong>
+
+            <p>
+              We normally use your email only to answer and resolve your request.
+            </p>
+
+            <a
+              class="button primary"
+              href="mailto:tavistudio@yahoo.com?subject=Playlist%20Studio%20Support"
+            >
+              tavistudio@yahoo.com
+            </a>
+          </div>
+        </div>
+
+        <div class="faq">
+          <details open>
+            <summary>Why does a YouTube video open outside the app?</summary>
+
+            <p>
+              The uploader may have disabled embedded playback, the video may
+              be marked as made for kids, or YouTube may otherwise restrict the
+              video. In those cases, Playlist Studio offers to open the official
+              YouTube app or website.
+            </p>
+          </details>
+
+          <details>
+            <summary>Why does YouTube playback stop in the background?</summary>
+
+            <p>
+              YouTube playback uses the official embedded player and stops when
+              the app is no longer visible. Return to Playlist Studio to resume
+              it. Imported audio files and personal recordings can continue
+              playing in the background.
+            </p>
+          </details>
+
+          <details>
+            <summary>Does Playlist Studio download YouTube audio or video?</summary>
+
+            <p>
+              No. Playlist Studio saves the link and uses YouTube’s official
+              player. It does not download, convert, extract, or create offline
+              copies of YouTube content.
+            </p>
+          </details>
+
+          <details>
+            <summary>How do I restore Unlimited Library?</summary>
+
+            <p>
+              Open the Unlimited Library screen and choose
+              <strong>Restore Purchases</strong>. Use the same Apple ID that
+              made the original purchase. The purchase is non-consumable
+              and does not renew.
+            </p>
+          </details>
+
+          <details>
+            <summary>Where are my songs and playlists stored?</summary>
+
+            <p>
+              Your playlist data, imported copies, and recordings are stored
+              in Playlist Studio’s private app storage on your device. Deleting
+              the app normally removes its local container, although a device
+              or iCloud backup may retain a copy according to your Apple backup
+              settings.
+            </p>
+          </details>
+
+          <details>
+            <summary>How do I delete my data?</summary>
+
+            <p>
+              Delete individual songs or playlists inside the app. To remove
+              the entire local library, delete Playlist Studio from the device
+              and manage any device or iCloud backups in Apple’s settings.
+              You can also revoke microphone access in System Settings and
+              disable in-app YouTube playback from Playlist Studio’s Privacy
+              screen.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="privacy" class="section alt" aria-labelledby="privacy-title">
+      <div class="shell legal-layout">
+        <div class="sticky-intro">
+          <p class="eyebrow">Last updated September 21, 2026</p>
+          <h2 id="privacy-title">Privacy Policy</h2>
+
+          <p>
+            This policy explains how Playlist Studio: Music Hub
+            and this website handle information.
+          </p>
+
+          <div class="legal-nav" aria-label="Privacy policy contents">
+            <a href="#privacy-summary">Summary</a>
+            <a href="#privacy-data">Data</a>
+            <a href="#privacy-youtube">YouTube</a>
+            <a href="#privacy-apple">Apple</a>
+            <a href="#privacy-control">Your controls</a>
+            <a href="#privacy-rights">Your rights</a>
+          </div>
+        </div>
+
+        <article class="legal-copy">
+          <h3 id="privacy-summary">
+            1. Who we are and what this policy covers
+          </h3>
+
+          <p>
+            Playlist Studio: Music Hub (“Playlist Studio,” “the app,” “we,”
+            “us,” or “our”) is provided by <strong>Tavi Studio</strong>.
+            This policy covers the Playlist Studio app for iPhone and iPad,
+            this support website, and support communications.
+          </p>
+
+          <p>
+            Privacy questions and requests can be sent to
+            <a href="mailto:tavistudio@yahoo.com?subject=Playlist%20Studio%20Privacy">
+              tavistudio@yahoo.com
+            </a>.
+          </p>
+
+          <div class="notice">
+            <strong>At a glance:</strong> no account is required. Playlist Studio
+            does not send your imported audio files, recordings, playlists, or
+            library contents to the developer. The app has no developer-operated
+            analytics, advertising, or tracking service.
+          </div>
+
+          <h3 id="privacy-data">
+            2. Information processed on your device
+          </h3>
+
+          <p>
+            The following information may be created, selected, or stored
+            locally in the app’s private container:
+          </p>
+
+          <ul>
+            <li>
+              playlist names, song titles, playlist order, search and library
+              organization;
+            </li>
+
+            <li>
+              YouTube URLs or video identifiers and the titles you save;
+            </li>
+
+            <li>
+              audio files you import and local copies created by the app;
+            </li>
+
+            <li>
+              audio recordings you make in the app;
+            </li>
+
+            <li>
+              app preferences, including your in-app YouTube playback choice;
+              and
+            </li>
+
+            <li>
+              local purchase entitlement status needed to unlock Unlimited
+              Library.
+            </li>
+          </ul>
+
+          <p>
+            This local information is used to provide the library, playlist,
+            playback, recording, import, and purchase features you request.
+            We do not operate a server that receives a copy of your library.
+          </p>
+
+          <h4>Files</h4>
+
+          <p>
+            You choose files through Apple’s system file picker. Playlist Studio
+            accesses only the items you select. Selected audio may be converted
+            on the device to M4A/AAC and copied into the app’s private storage
+            so it can be organized and played. The app does not scan unrelated
+            files.
+          </p>
+
+          <h4>Microphone</h4>
+
+          <p>
+            Playlist Studio requests microphone permission only when you use
+            the recording feature. Audio is captured, processed, and stored
+            locally. You can deny or revoke access at any time in System
+            Settings. If permission is denied, recording will not work, but
+            the rest of the app remains available.
+          </p>
+
+          <h4>Background audio and media controls</h4>
+
+          <p>
+            For local audio playback, Playlist Studio may provide title,
+            playback status, progress, and artwork to Apple’s system media
+            services so that Lock Screen, Control Center, headset, and vehicle
+            controls can work. This processing occurs through iOS or iPadOS.
+          </p>
+
+          <h3 id="privacy-youtube">
+            3. YouTube API Services and embedded playback
+          </h3>
+
+          <p>
+            Playlist Studio uses YouTube API Services. By using the app’s
+            YouTube features, you also agree to the
+            <a
+              href="https://www.youtube.com/static?template=terms"
+              rel="noopener noreferrer"
+            >
+              YouTube Terms of Service
+            </a>.
+            Google’s handling of information is described in the
+            <a
+              href="https://policies.google.com/privacy"
+              rel="noopener noreferrer"
+            >
+              Google Privacy Policy
+            </a>.
+            You may also review the
+            <a
+              href="https://developers.google.com/youtube/terms/api-services-terms-of-service"
+              rel="noopener noreferrer"
+            >
+              YouTube API Services Terms of Service
+            </a>.
+          </p>
+
+          <h4>Information sent to and received from YouTube</h4>
+
+          <p>
+            When you add a YouTube link, Playlist Studio sends the video
+            identifier to the YouTube Data API to retrieve information such as
+            the video title, channel information, thumbnail, embedding status,
+            and whether the video is marked as made for kids. The app uses this
+            information to verify the link, suggest a formatted artist and song
+            title, and decide whether in-app playback is permitted.
+          </p>
+
+          <p>
+            When you allow and use in-app playback, Playlist Studio loads
+            YouTube’s official IFrame Player in a web view. Google or YouTube
+            may receive information normally involved in an internet and
+            embedded-player request, including your IP address, device and
+            browser characteristics, app or request identifiers, cookies or
+            similar technologies, video identifiers, and player interactions
+            or playback information. YouTube may display its own content,
+            branding, recommendations, or advertising according to its policies
+            and your Google or YouTube settings.
+          </p>
+
+          <p>
+            Playlist Studio does not use Google or YouTube OAuth, does not ask
+            you to sign in to a Google account, and does not access your Google
+            profile, subscriptions, watch history, private videos, or other
+            authorized account data.
+          </p>
+
+          <h4>Consent and control</h4>
+
+          <p>
+            Before embedded YouTube playback, the app asks for your choice.
+            You can disable <strong>Allow in-app YouTube playback</strong>
+            at any time on the Privacy screen. When disabled, new embedded
+            playback is stopped and YouTube links open only in the official
+            YouTube app or website. Metadata requests needed to identify and
+            validate a YouTube link may still occur when you choose to add
+            such a link.
+          </p>
+
+          <p>
+            Playlist Studio does not download, convert, extract audio from,
+            or cache YouTube content for offline playback. Video availability
+            and playback are controlled by YouTube, the uploader, your region,
+            network conditions, and applicable YouTube restrictions.
+          </p>
+
+          <h3 id="privacy-apple">
+            4. Apple services and in-app purchases
+          </h3>
+
+          <p>
+            Unlimited Library is a non-consumable in-app purchase processed
+            by Apple through StoreKit. Apple may process your Apple ID, payment
+            information, transaction details, device information, storefront,
+            and purchase history under the
+            <a
+              href="https://www.apple.com/legal/privacy/"
+              rel="noopener noreferrer"
+            >
+              Apple Privacy Policy
+            </a>.
+            Playlist Studio receives product, transaction, and entitlement
+            information needed to offer, complete, and restore the purchase.
+            We do not receive your complete card number or Apple ID password.
+          </p>
+
+          <p>
+            The displayed price is supplied by Apple and can vary by country,
+            currency, tax, and storefront. Restoring a purchase requires the
+            Apple ID used for the original transaction.
+          </p>
+
+          <h3>5. Information the developer may receive</h3>
+
+          <p>
+            The developer does not receive your in-app library as described
+            above. We may receive limited information in these situations:
+          </p>
+
+          <ul>
+            <li>
+              <strong>Support email:</strong> your email address, message,
+              attachments, and any diagnostic details you choose to provide.
+            </li>
+
+            <li>
+              <strong>App Store information:</strong> Apple may provide
+              aggregated sales, proceeds, installations, crashes, or diagnostic
+              information through App Store Connect according to Apple’s
+              settings and policies. We do not use that information to identify
+              your library contents.
+            </li>
+
+            <li>
+              <strong>Legal or security matters:</strong> information you
+              provide may be used when reasonably necessary to prevent fraud,
+              protect rights and safety, or comply with law.
+            </li>
+          </ul>
+
+          <p>
+            Playlist Studio does not sell personal information and does not
+            share personal information for cross-context behavioral advertising.
+            The app does not use the Apple Advertising Identifier and does not
+            track you across apps or websites owned by other companies.
+          </p>
+
+          <h3>6. This website</h3>
+
+          <p>
+            This static website does not use an account system, contact form,
+            advertising network, analytics script, tracking pixel, or
+            developer-set cookie. If your hosting provider automatically
+            processes basic request information such as IP address, user agent,
+            date, time, requested page, or security logs, that processing is
+            controlled by the host and is limited to delivering, securing, and
+            operating the website. Following an external link is subject to the
+            destination’s privacy policy.
+          </p>
+
+          <h3>7. How information is shared</h3>
+
+          <p>
+            We do not disclose your local library to third parties. Information
+            is transmitted only when needed for a feature you choose or as
+            required by law:
+          </p>
+
+          <ul>
+            <li>
+              to <strong>Google/YouTube</strong> for YouTube metadata
+              and playback;
+            </li>
+
+            <li>
+              to <strong>Apple</strong> for file selection, system media
+              features, purchases, restoration, distribution, diagnostics,
+              and platform services;
+            </li>
+
+            <li>
+              to email providers when you contact support; and
+            </li>
+
+            <li>
+              to authorities or other parties when legally required or
+              necessary to protect users, the public, or our rights.
+            </li>
+          </ul>
+
+          <p>
+            Apple, Google, YouTube, email providers, and website hosts process
+            information under their own terms and privacy policies and may
+            process it in countries where they operate. We select established
+            platform providers and expect them to handle information in
+            accordance with applicable law and their published privacy
+            commitments.
+          </p>
+
+          <h3>8. Legal bases</h3>
+
+          <p>
+            Where laws such as the GDPR require a legal basis, processing may
+            rely on: your consent for microphone access and embedded YouTube
+            playback; performance of the service you request when you import,
+            organize, or play content; legitimate interests in responding to
+            support requests and protecting the service; and compliance with
+            legal obligations. You may withdraw consent through the controls
+            described below. Withdrawal does not affect earlier lawful
+            processing.
+          </p>
+
+          <h3>9. Retention, backups, and security</h3>
+
+          <p>
+            Local library information remains on your device until you delete
+            the relevant item or remove the app. iOS or iPadOS backups may retain
+            app data according to your device and iCloud backup settings; the
+            developer cannot access or directly delete those backups. Apple
+            retains transaction information under its own policy.
+          </p>
+
+          <p>
+            Support correspondence is kept only as long as reasonably needed
+            to answer the request, maintain relevant business or legal records,
+            resolve disputes, and protect the service, then deleted or
+            anonymized when no longer needed. You may request deletion of
+            support correspondence, subject to legal retention duties.
+          </p>
+
+          <p>
+            Playlist Studio uses Apple’s app sandbox, system permission
+            controls, and encrypted HTTPS connections for supported network
+            requests. No security method can guarantee absolute protection,
+            but we limit processing to what is needed for the features
+            described here.
+          </p>
+
+          <h3 id="privacy-control">
+            10. Your choices and deletion controls
+          </h3>
+
+          <ul>
+            <li>
+              Delete songs and playlists from within Playlist Studio.
+            </li>
+
+            <li>
+              Delete the app to remove its active local container from the
+              device.
+            </li>
+
+            <li>
+              Review and remove device or iCloud backups in Apple’s settings
+              if you also want backed-up copies removed.
+            </li>
+
+            <li>
+              Revoke microphone access in System Settings.
+            </li>
+
+            <li>
+              Disable in-app YouTube playback from Playlist Studio’s Privacy
+              screen.
+            </li>
+
+            <li>
+              Stop using YouTube features or open YouTube externally instead.
+            </li>
+
+            <li>
+              Contact us to request access to or deletion of information
+              contained in your support correspondence.
+            </li>
+          </ul>
+
+          <h3 id="privacy-rights">
+            11. Your privacy rights
+          </h3>
+
+          <p>
+            Depending on where you live, you may have rights to request access,
+            correction, deletion, restriction, portability, or objection
+            concerning personal information we hold about you, and to withdraw
+            consent. You may also have the right to complain to your local data
+            protection authority. We do not discriminate against users for
+            exercising applicable privacy rights.
+          </p>
+
+          <p>
+            Because the developer does not receive your local library, we
+            generally cannot access, export, correct, or delete it for you.
+            Use the device and in-app controls above. For information you sent
+            by email, contact
+            <a href="mailto:tavistudio@yahoo.com?subject=Playlist%20Studio%20Privacy%20Request">
+              tavistudio@yahoo.com
+            </a>.
+            We may need reasonable information to verify and fulfill a request.
+          </p>
+
+          <p>
+            Playlist Studio does not perform automated decision-making that
+            produces legal or similarly significant effects.
+          </p>
+
+          <h3>12. Children’s privacy</h3>
+
+          <p>
+            Playlist Studio is a general-audience organization and playback
+            tool and is not directed to children under 13. We do not knowingly
+            collect personal information from children. YouTube videos marked
+            as made for kids are not played in the embedded player and are
+            opened externally, where YouTube’s rules and parental controls
+            apply. If you believe a child sent personal information in a
+            support request, contact us so we can delete it.
+          </p>
+
+          <h3>13. Changes to this policy</h3>
+
+          <p>
+            We may update this policy when features, providers, or legal
+            requirements change. We will post the revised policy here and
+            change the “Last updated” date. Material changes may also be
+            communicated in the app or App Store listing when appropriate.
+          </p>
+
+          <h3>14. Contact</h3>
+
+          <p>
+            <strong>Tavi Studio</strong><br>
+            Email:
+            <a href="mailto:tavistudio@yahoo.com?subject=Playlist%20Studio%20Privacy">
+              tavistudio@yahoo.com
+            </a>
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="terms" class="section" aria-labelledby="terms-title">
+      <div class="shell legal-layout">
+        <div class="sticky-intro">
+          <p class="eyebrow">Last updated September 21, 2026</p>
+          <h2 id="terms-title">Terms of Use</h2>
+
+          <p>
+            Plain-language terms for using Playlist Studio
+            and its third-party features.
+          </p>
+        </div>
+
+        <article class="legal-copy">
+          <h3>1. Agreement and license</h3>
+
+          <p>
+            By downloading or using Playlist Studio, you agree to these Terms
+            of Use, the Privacy Policy above, and Apple’s
+            <a
+              href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
+              rel="noopener noreferrer"
+            >
+              Standard Licensed Application End User License Agreement
+            </a>.
+            If you do not agree, do not use the app. Subject to those terms,
+            you receive a personal, limited, non-exclusive, non-transferable
+            license to use the app on supported Apple devices you own or
+            control.
+          </p>
+
+          <h3>2. Your content and lawful use</h3>
+
+          <p>
+            You remain responsible for the audio, recordings, titles, links,
+            and playlists you add. Use only content you own, created, licensed,
+            or otherwise have permission to use. Do not use Playlist Studio to
+            infringe copyright, privacy, publicity, or other rights; bypass
+            technical restrictions; distribute unlawful material; or interfere
+            with the app or third-party services.
+          </p>
+
+          <h3>3. YouTube</h3>
+
+          <p>
+            YouTube features are provided through YouTube API Services and the
+            official embedded player. Your use is also governed by the
+            <a
+              href="https://www.youtube.com/static?template=terms"
+              rel="noopener noreferrer"
+            >
+              YouTube Terms of Service
+            </a>
+            and
+            <a
+              href="https://policies.google.com/privacy"
+              rel="noopener noreferrer"
+            >
+              Google Privacy Policy
+            </a>.
+            Playlist Studio does not download or convert YouTube content.
+            We cannot guarantee that a video will remain available, permit
+            embedding, play in your region, or continue in the background.
+            YouTube may change or discontinue its services or requirements.
+          </p>
+
+          <h3>4. Unlimited Library purchase</h3>
+
+          <p>
+            The free Library supports up to 50 songs. Unlimited Library removes
+            that fixed library limit through a one-time, non-consumable in-app
+            purchase, subject to available device storage and normal technical
+            limits. The price and applicable taxes are shown by Apple before
+            purchase and may vary by storefront. Purchases and refunds are
+            processed by Apple under Apple’s terms. Use Restore Purchases with
+            the same Apple ID to restore an eligible purchase.
+          </p>
+
+          <h3>5. Availability and changes</h3>
+
+          <p>
+            We may improve, update, repair, or discontinue features as
+            necessary. Operation may depend on your device, operating system,
+            storage, permissions, internet connection, and third-party services.
+            We do not promise that every external link or third-party item will
+            remain available.
+          </p>
+
+          <h3>6. Disclaimer and responsibility</h3>
+
+          <p>
+            To the extent permitted by law, the app and website are provided
+            “as is” and “as available.” We are not responsible for third-party
+            content or services, user-provided content, loss caused by
+            unsupported modifications, or failures outside our reasonable
+            control. Nothing in these terms excludes rights or remedies that
+            cannot legally be excluded under applicable consumer law.
+          </p>
+
+          <h3>7. Contact</h3>
+
+          <p>
+            Questions about these terms may be sent to
+            <a href="mailto:tavistudio@yahoo.com?subject=Playlist%20Studio%20Terms">
+              tavistudio@yahoo.com
+            </a>.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-row">
+      <div>© 2026 Octavian Petrescu / Tavi Studio</div>
+
+      <div class="footer-links">
+        <a href="#support">Support</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#terms">Terms</a>
+        <a href="mailto:tavistudio@yahoo.com">Contact</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
