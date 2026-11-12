@@ -381,6 +381,14 @@
       margin-top: 22px;
     }
 
+    .icloud-panel p + p {
+      margin-top: 14px;
+    }
+
+    .icloud-panel .eyebrow {
+      margin-bottom: 10px;
+    }
+
     .card h3 {
       margin-bottom: 10px;
       font-size: 1.25rem;
@@ -1299,7 +1307,10 @@
             Local library information remains on your device until you delete
             the relevant item or remove the app. iOS or iPadOS backups may retain
             app data according to your device and iCloud backup settings; the
-            developer cannot access or directly delete those backups. Apple
+            developer cannot access or directly delete those backups. Separately,
+            completed copies from optional iCloud sync remain available until
+            deleted through the app while syncing or managed in Apple’s iCloud
+            storage settings. Synced deletions also propagate across devices. Apple
             retains transaction information under its own policy.
           </p>
 
@@ -1325,7 +1336,8 @@
 
           <ul>
             <li>
-              Delete songs and playlists from within Playlist Studio.
+              Delete songs and playlists from within Playlist Studio. Deletions
+              also sync when Sync with iCloud is enabled and available.
             </li>
 
             <li>
@@ -1334,8 +1346,10 @@
             </li>
 
             <li>
-              Review and remove device or iCloud backups in Apple’s settings
-              if you also want backed-up copies removed.
+              Turn Sync with iCloud on or off anytime in Settings &gt; iCloud Library.
+              Turning it off keeps local data and existing iCloud copies. Manage
+              the app’s iCloud storage and device backups separately in Apple’s
+              settings if you also want those copies removed.
             </li>
 
             <li>
@@ -1496,6 +1510,9 @@
             Purchases are processed by Apple and are subject to Apple’s applicable terms and policies. 
             Use Restore Purchases with the same Apple ID to restore an eligible purchase.
           </p>
+
+          <h3>iCloud Library</h3>
+          <p>iCloud sync is optional and off by default on new installations. You can enable or disable it in Settings &gt; iCloud Library. When enabled and available, it syncs your library, imported audio, recordings, and playlists to your private iCloud storage. It requires an internet connection and sufficient iCloud storage. After reinstalling or changing devices, use the same iCloud account and enable sync to restore data that finished syncing. YouTube entries sync their links, not offline copies of YouTube content. Turning sync off preserves local data and existing iCloud copies; deletions also sync while enabled. iCloud sync does not provide a version history or guarantee recovery of unsynced or deleted items.</p>
 
           <h3>5. Availability and changes</h3>
 
