@@ -365,16 +365,25 @@
     }
 
     .source-icon {
-      background: linear-gradient(135deg, #fc2e66, #0f6eeb);
+      background: linear-gradient(
+        135deg,
+        rgb(99% 18% 40%) 0%,
+        rgb(61% 22% 92%) 50%,
+        rgb(6% 43% 92%) 100%
+      );
     }
 
     .source-icon svg {
       width: 24px;
       height: 24px;
       stroke: currentColor;
-      stroke-width: 1.8;
+      stroke-width: 1.9;
       stroke-linecap: round;
       stroke-linejoin: round;
+    }
+
+    .source-icon-import svg {
+      transform: translateY(-1.32px);
     }
 
     .icloud-panel {
@@ -749,7 +758,7 @@
 
         <div class="feature-grid">
           <article class="card">
-            <div class="card-icon source-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="m10 13 4-4m-6 6-1 1a4 4 0 0 1-6-6l4-4a4 4 0 0 1 6 0m2 2 1-1a4 4 0 0 1 6 6l-4 4a4 4 0 0 1-6 0" transform="translate(1 1)"/></svg></div>
+            <div class="card-icon source-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
             <h3>Add YouTube links</h3>
 
             <p>
@@ -759,7 +768,7 @@
           </article>
 
           <article class="card">
-            <div class="card-icon source-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v12m-4-4 4 4 4-4M5 12v8h14v-8"/></svg></div>
+            <div class="card-icon source-icon source-icon-import" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v12m-4.5-4.5L12 15l4.5-4.5M4 12.5V21h16v-8.5"/></svg></div>
             <h3>Import audio files</h3>
 
             <p>
@@ -769,7 +778,7 @@
           </article>
 
           <article class="card">
-            <div class="card-icon source-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M6 11v1a6 6 0 0 0 12 0v-1m-6 7v3m-3 0h6"/></svg></div>
+            <div class="card-icon source-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="9" y="2.5" width="6" height="11.5" rx="3" fill="currentColor" stroke="none"/><path d="M6.5 10.5v1a5.5 5.5 0 0 0 11 0v-1M12 17v4m-3.2 0h6.4"/></svg></div>
             <h3>Make recordings</h3>
 
             <p>
