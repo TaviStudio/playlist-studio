@@ -364,6 +364,23 @@
       font-weight: 850;
     }
 
+    .source-icon {
+      background: linear-gradient(135deg, #fc2e66, #0f6eeb);
+    }
+
+    .source-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .icloud-panel {
+      margin-top: 22px;
+    }
+
     .card h3 {
       margin-bottom: 10px;
       font-size: 1.25rem;
@@ -724,7 +741,7 @@
 
         <div class="feature-grid">
           <article class="card">
-            <div class="card-icon" aria-hidden="true">▶</div>
+            <div class="card-icon source-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="m10 13 4-4m-6 6-1 1a4 4 0 0 1-6-6l4-4a4 4 0 0 1 6 0m2 2 1-1a4 4 0 0 1 6 6l-4 4a4 4 0 0 1-6 0" transform="translate(1 1)"/></svg></div>
             <h3>Add YouTube links</h3>
 
             <p>
@@ -734,7 +751,7 @@
           </article>
 
           <article class="card">
-            <div class="card-icon" aria-hidden="true">↓</div>
+            <div class="card-icon source-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v12m-4-4 4 4 4-4M5 12v8h14v-8"/></svg></div>
             <h3>Import audio files</h3>
 
             <p>
@@ -744,7 +761,7 @@
           </article>
 
           <article class="card">
-            <div class="card-icon" aria-hidden="true">●</div>
+            <div class="card-icon source-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M6 11v1a6 6 0 0 0 12 0v-1m-6 7v3m-3 0h6"/></svg></div>
             <h3>Make recordings</h3>
 
             <p>
@@ -784,6 +801,13 @@
           </article>
         </div>
 
+        <article class="card icloud-panel" aria-labelledby="icloud-title">
+          <p class="eyebrow">Optional iCloud sync</p>
+          <h3 id="icloud-title">Your library, ready for your next device.</h3>
+          <p>Keep your playlists, imported audio, and recordings in your private iCloud storage. Sync is off by default on new installations. Enable it after your first saved song, or anytime in <strong>Settings &gt; iCloud Library</strong>. A local copy of imported audio and recordings stays available offline.</p>
+          <p>After reinstalling or changing devices, sign in to the same iCloud account, enable sync, and keep Playlist Studio open while your library downloads. Only data that finished syncing can be restored. YouTube entries sync their links; YouTube playback still requires an internet connection.</p>
+        </article>
+
         <div class="truth-panel">
           <article class="card">
             <h3>Designed with privacy in mind</h3>
@@ -793,6 +817,7 @@
               <li>No developer analytics or tracking SDK</li>
               <li>No ads served by Playlist Studio</li>
               <li>Your library and audio are stored locally on your device</li>
+              <li>Optional sync to your private iCloud storage</li>
             </ul>
           </article>
 
@@ -887,11 +912,27 @@
 
             <p>
               Your playlist data, imported copies, and recordings are stored
-              in Playlist Studio’s private app storage on your device. Deleting
-              the app normally removes its local container, although a device
-              or iCloud backup may retain a copy according to your Apple backup
-              settings.
+              in Playlist Studio’s private app storage on your device. When you enable
+              <strong>Sync with iCloud</strong>, your library also syncs to your private
+              iCloud storage. Appearance and playback preferences remain local. Deleting
+              the app normally removes its local container; completed iCloud copies
+              remain available for restoration with the same account after you enable sync.
             </p>
+          </details>
+
+          <details>
+            <summary>How do I enable iCloud sync?</summary>
+            <p>After your first saved song, choose <strong>Enable iCloud</strong> in the Protect Your Library dialog. You can also open the app’s Settings menu, choose <strong>iCloud Library</strong>, and enable <strong>Sync with iCloud</strong> anytime. Sign in to iCloud in your device settings and make sure enough iCloud storage is available. Sync runs while Playlist Studio is active; check its status or choose <strong>Sync Now</strong> on the same screen.</p>
+          </details>
+
+          <details>
+            <summary>How do I restore my library after reinstalling or changing devices?</summary>
+            <p>Sign in to the same iCloud account, open Playlist Studio, and enable <strong>Sync with iCloud</strong> in <strong>Settings &gt; iCloud Library</strong>. Keep the app open and connected while your library and audio download. You can restore only data that finished syncing before you removed the app or changed devices. Restoring an Unlimited Library purchase is a separate action through <strong>Restore Purchases</strong>.</p>
+          </details>
+
+          <details>
+            <summary>What happens if I turn iCloud sync off?</summary>
+            <p>Syncing stops, while your local library and existing iCloud copies are kept. New changes remain on this device until you enable sync again. When sync is enabled, deletions also sync across devices. iCloud sync does not provide a version history or a way to undo synced deletions.</p>
           </details>
 
           <details>
@@ -899,8 +940,10 @@
 
             <p>
               Delete individual songs or playlists inside the app. To remove
-              the entire local library, delete Playlist Studio from the device
-              and manage any device or iCloud backups in Apple’s settings.
+              the entire local library, delete Playlist Studio from the device.
+              Deletions made in the app also sync while iCloud sync is enabled.
+              Uninstalling alone does not delete completed iCloud copies. Manage
+              the app’s iCloud storage and any device backups in Apple’s settings.
               You can also revoke microphone access in System Settings and
               turn off <strong>Enable YouTube Services</strong> on Playlist
               Studio’s Privacy screen.
@@ -913,7 +956,7 @@
     <section id="privacy" class="section alt" aria-labelledby="privacy-title">
       <div class="shell legal-layout">
         <div class="sticky-intro">
-          <p class="eyebrow">Last updated September 30, 2026</p>
+          <p class="eyebrow">Last updated November 12, 2026</p>
           <h2 id="privacy-title">Privacy Policy</h2>
 
           <p>
@@ -926,6 +969,7 @@
             <a href="#privacy-data">Data</a>
             <a href="#privacy-youtube">YouTube</a>
             <a href="#privacy-apple">Apple</a>
+            <a href="#privacy-icloud">iCloud</a>
             <a href="#privacy-control">Your controls</a>
             <a href="#privacy-rights">Your rights</a>
           </div>
@@ -952,6 +996,8 @@
           <div class="notice">
             <strong>At a glance:</strong> No account is required. Your library,
             imported audio, and recordings are stored locally on your device.
+            Optional iCloud sync also saves your library to your private iCloud storage
+            when you enable it. It is off by default on new installations.
             Playlist Studio does not use developer-operated analytics or tracking.
             Some features use third-party services, including YouTube and Apple, as explained below.
           </div>
@@ -1140,6 +1186,12 @@
             Apple ID used for the original transaction.
           </p>
 
+          <h4 id="privacy-icloud">iCloud Library</h4>
+          <p>Playlist Studio does not require a separate app account. When you enable Sync with iCloud and iCloud is available, library data, imported audio, saved recordings, playlists, and playlist order sync to your private iCloud database, associated with the iCloud account signed in on your device. This uses your iCloud storage and requires an internet connection and sufficient available storage. A local copy of imported audio and recordings remains available for offline playback. Appearance and playback preferences remain on your device.</p>
+          <p>Sync with iCloud is off by default on new installations. After your first saved song, the app offers to enable it. You can turn it on or off and check sync status anytime in Settings &gt; iCloud Library. Existing sync choices are preserved when updating. Turning sync off stops syncing without deleting your local library or copies already saved in iCloud.</p>
+          <p>After reinstalling or changing devices, sign in to the same iCloud account, enable Sync with iCloud in Settings &gt; iCloud Library, and keep the app open while your library downloads. Only changes that finished syncing can be restored. YouTube entries sync their saved links; temporary YouTube API title caches and thumbnails are not uploaded. Playback continues through YouTube and requires an internet connection.</p>
+          <p>Deletions also sync when Sync with iCloud is enabled and iCloud is available. Uninstalling the app removes its local container according to the operating system’s behavior, but does not delete completed iCloud copies. You can manage the app’s iCloud storage in device Settings. iCloud synchronization is separate from device backup and does not provide version history or recovery of unsynced or deleted items. Apple handles iCloud under its <a href="https://www.apple.com/legal/privacy/" rel="noopener noreferrer">Privacy Policy</a>.</p>
+
           <h3>5. Information the developer may receive</h3>
 
           <p>
@@ -1205,7 +1257,7 @@
             <li>
               to <strong>Apple</strong> for file selection, system media
               features, purchases, restoration, distribution, diagnostics,
-              and platform services;
+              optional private iCloud library synchronization, and platform services;
             </li>
 
             <li>
@@ -1371,7 +1423,7 @@
     <section id="terms" class="section" aria-labelledby="terms-title">
       <div class="shell legal-layout">
         <div class="sticky-intro">
-          <p class="eyebrow">Last updated September 30, 2026</p>
+          <p class="eyebrow">Last updated November 12, 2026</p>
           <h2 id="terms-title">Terms of Use</h2>
 
           <p>
