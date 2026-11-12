@@ -812,8 +812,9 @@
         <article class="card icloud-panel" aria-labelledby="icloud-title">
           <p class="eyebrow">Optional iCloud sync</p>
           <h3 id="icloud-title">Your library, ready for your next device.</h3>
-          <p>Keep your playlists, imported audio, and recordings in your private iCloud storage. Sync is off by default on new installations. Enable it after your first saved song, or anytime in <strong>Settings &gt; iCloud Library</strong>. A local copy of imported audio and recordings stays available offline.</p>
-          <p>After reinstalling or changing devices, sign in to the same iCloud account, enable sync, and keep Playlist Studio open while your library downloads. Only data that finished syncing can be restored. YouTube entries sync their links; YouTube playback still requires an internet connection.</p>
+          <p>Keep your playlists, imported audio, and recordings in your private iCloud storage. Sync is on by default unless your previously saved choice is off. Your sync choice is saved in iCloud so it can be remembered after reinstalling or changing devices with the same iCloud account. You can change it anytime in <strong>Settings &gt; iCloud Library</strong>. A local copy of imported audio and recordings stays available offline.</p>
+          <p>After reinstalling or changing devices, sign in to the same iCloud account. If your last saved sync choice was on, your synced library downloads automatically while Playlist Studio is open. If it was off, it stays off until you enable it. Only data and sync choices that reached iCloud can be restored. This uses your iCloud storage and requires an internet connection. YouTube entries sync their links; YouTube playback still requires an internet connection.</p>
+          <p>The iCloud button next to Settings opens <strong>iCloud Library</strong>. A green cloud indicates successful sync. A red crossed cloud means sync is off; a red cloud with an exclamation mark means the sync state needs checking.</p>
         </article>
 
         <div class="truth-panel">
@@ -920,27 +921,34 @@
 
             <p>
               Your playlist data, imported copies, and recordings are stored
-              in Playlist Studio’s private app storage on your device. When you enable
-              <strong>Sync with iCloud</strong>, your library also syncs to your private
-              iCloud storage. Appearance and playback preferences remain local. Deleting
-              the app normally removes its local container; completed iCloud copies
-              remain available for restoration with the same account after you enable sync.
+              in Playlist Studio’s private app storage on your device. When
+              <strong>Sync with iCloud</strong> is enabled and iCloud is available, your
+              library also syncs to your private iCloud storage. Sync starts on unless
+              your previously saved choice is off. Appearance and playback preferences
+              remain local. Deleting the app normally removes its local container;
+              completed iCloud copies remain available for restoration with the same
+              account when sync is enabled.
             </p>
           </details>
 
           <details>
+            <summary>What does the iCloud button mean?</summary>
+            <p>Tap the cloud next to Settings to open <strong>iCloud Library</strong>. A green cloud means synchronization has succeeded. A red crossed cloud means sync is off. A red cloud with an exclamation mark means the app is still checking iCloud or synchronization needs attention; open iCloud Library to see the current status.</p>
+          </details>
+
+          <details>
             <summary>How do I enable iCloud sync?</summary>
-            <p>After your first saved song, choose <strong>Enable iCloud</strong> in the Protect Your Library dialog. You can also open the app’s Settings menu, choose <strong>iCloud Library</strong>, and enable <strong>Sync with iCloud</strong> anytime. Sign in to iCloud in your device settings and make sure enough iCloud storage is available. Sync runs while Playlist Studio is active; check its status or choose <strong>Sync Now</strong> on the same screen.</p>
+            <p>iCloud sync is on by default unless your previously saved choice is off. To change it, tap the iCloud button next to Settings, or choose <strong>Settings &gt; iCloud Library</strong>, and use the <strong>Sync with iCloud</strong> switch. Sign in to iCloud in your device settings and make sure enough iCloud storage is available. Sync runs while Playlist Studio is active; check its status or choose <strong>Sync Now</strong> on the same screen.</p>
           </details>
 
           <details>
             <summary>How do I restore my library after reinstalling or changing devices?</summary>
-            <p>Sign in to the same iCloud account, open Playlist Studio, and enable <strong>Sync with iCloud</strong> in <strong>Settings &gt; iCloud Library</strong>. Keep the app open and connected while your library and audio download. You can restore only data that finished syncing before you removed the app or changed devices. Restoring an Unlimited Library purchase is a separate action through <strong>Restore Purchases</strong>.</p>
+            <p>Sign in to the same iCloud account and open Playlist Studio. The app restores your last sync choice saved in iCloud. If it was on, previously synced songs, audio, and playlists download automatically while the app is open and connected. If it was off, it stays off; enable <strong>Sync with iCloud</strong> in <strong>iCloud Library</strong> when you want to restore your library. You can restore only data and sync choices that reached iCloud before you removed the app or changed devices. If iCloud is temporarily unavailable, your local library remains available and library transfers wait. Restoring an Unlimited Library purchase is a separate action through <strong>Restore Purchases</strong>.</p>
           </details>
 
           <details>
             <summary>What happens if I turn iCloud sync off?</summary>
-            <p>Syncing stops, while your local library and existing iCloud copies are kept. New changes remain on this device until you enable sync again. When sync is enabled, deletions also sync across devices. iCloud sync does not provide a version history or a way to undo synced deletions.</p>
+            <p>Library transfers stop, while your local library and existing iCloud copies are kept. Your sync choice is saved separately in iCloud, even while library sync is off, so the app can remember it after reinstalling or changing devices. A changed choice must reach iCloud before it can be restored elsewhere. New library changes remain on this device until you enable sync again. When sync is enabled, deletions also sync across devices. iCloud sync does not provide a version history or a way to undo synced deletions.</p>
           </details>
 
           <details>
@@ -1004,8 +1012,10 @@
           <div class="notice">
             <strong>At a glance:</strong> No account is required. Your library,
             imported audio, and recordings are stored locally on your device.
-            Optional iCloud sync also saves your library to your private iCloud storage
-            when you enable it. It is off by default on new installations.
+            iCloud sync also saves your library to your private iCloud storage
+            when enabled and available. It is on by default unless your previously
+            saved choice is off. You can turn it on or off in iCloud Library;
+            your sync choice is saved separately in iCloud for future installations.
             Playlist Studio does not use developer-operated analytics or tracking.
             Some features use third-party services, including YouTube and Apple, as explained below.
           </div>
@@ -1195,9 +1205,9 @@
           </p>
 
           <h4 id="privacy-icloud">iCloud Library</h4>
-          <p>Playlist Studio does not require a separate app account. When you enable Sync with iCloud and iCloud is available, library data, imported audio, saved recordings, playlists, and playlist order sync to your private iCloud database, associated with the iCloud account signed in on your device. This uses your iCloud storage and requires an internet connection and sufficient available storage. A local copy of imported audio and recordings remains available for offline playback. Appearance and playback preferences remain on your device.</p>
-          <p>Sync with iCloud is off by default on new installations. After your first saved song, the app offers to enable it. You can turn it on or off and check sync status anytime in Settings &gt; iCloud Library. Existing sync choices are preserved when updating. Turning sync off stops syncing without deleting your local library or copies already saved in iCloud.</p>
-          <p>After reinstalling or changing devices, sign in to the same iCloud account, enable Sync with iCloud in Settings &gt; iCloud Library, and keep the app open while your library downloads. Only changes that finished syncing can be restored. YouTube entries sync their saved links; temporary YouTube API title caches and thumbnails are not uploaded. Playback continues through YouTube and requires an internet connection.</p>
+          <p>Playlist Studio does not require a separate app account. When Sync with iCloud is enabled and iCloud is available, library data, imported audio, saved recordings, playlists, and playlist order sync to your private iCloud database, associated with the iCloud account signed in on your device. This uses your iCloud storage and requires an internet connection and sufficient available storage. A local copy of imported audio and recordings remains available for offline playback. Appearance and playback preferences remain on your device.</p>
+          <p>Sync with iCloud is on by default unless your previously saved choice is off. You can turn it on or off and check sync status anytime using the iCloud button next to Settings or Settings &gt; iCloud Library. Your sync choice is stored separately in your private iCloud database, including while library sync is off, so it can be remembered after reinstalling or changing devices with the same iCloud account. A changed choice must reach iCloud before it can be restored elsewhere. Existing sync choices are preserved when updating. Turning sync off stops library transfers without deleting your local library or copies already saved in iCloud.</p>
+          <p>After reinstalling or changing devices, sign in to the same iCloud account. The app applies your last sync choice saved in iCloud. If it was on, your synced library downloads automatically while the app is open; if it was off, it stays off until you enable Sync with iCloud in iCloud Library. Only data that finished syncing can be restored. If iCloud is unavailable, your local library remains available and library transfers wait until the saved choice can be checked. YouTube entries sync their saved links; temporary YouTube API title caches and thumbnails are not uploaded. Playback continues through YouTube and requires an internet connection.</p>
           <p>Deletions also sync when Sync with iCloud is enabled and iCloud is available. Uninstalling the app removes its local container according to the operating system’s behavior, but does not delete completed iCloud copies. You can manage the app’s iCloud storage in device Settings. iCloud synchronization is separate from device backup and does not provide version history or recovery of unsynced or deleted items. Apple handles iCloud under its <a href="https://www.apple.com/legal/privacy/" rel="noopener noreferrer">Privacy Policy</a>.</p>
 
           <h3>5. Information the developer may receive</h3>
@@ -1512,7 +1522,7 @@
           </p>
 
           <h3>iCloud Library</h3>
-          <p>iCloud sync is optional and off by default on new installations. You can enable or disable it in Settings &gt; iCloud Library. When enabled and available, it syncs your library, imported audio, recordings, and playlists to your private iCloud storage. It requires an internet connection and sufficient iCloud storage. After reinstalling or changing devices, use the same iCloud account and enable sync to restore data that finished syncing. YouTube entries sync their links, not offline copies of YouTube content. Turning sync off preserves local data and existing iCloud copies; deletions also sync while enabled. iCloud sync does not provide a version history or guarantee recovery of unsynced or deleted items.</p>
+          <p>iCloud sync is optional and on by default unless your previously saved choice is off. You can enable or disable it in Settings &gt; iCloud Library or open that screen using the iCloud button next to Settings. Your sync choice is saved separately in your private iCloud database, including while library sync is off. A changed choice must reach iCloud before it can be restored after reinstalling or changing devices. When enabled and available, sync transfers your library, imported audio, recordings, and playlists to your private iCloud storage. It requires an internet connection and sufficient iCloud storage. After reinstalling or changing devices, use the same iCloud account. The app applies your last sync choice saved in iCloud: if it was on, previously synced data downloads automatically while the app is open; if it was off, it stays off until you enable it. If iCloud is unavailable, your local library remains available and library transfers wait. Only data that finished syncing can be restored. YouTube entries sync their links, not offline copies of YouTube content. Turning sync off stops library transfers and preserves local data and existing iCloud copies; deletions also sync while enabled. iCloud sync does not provide a version history or guarantee recovery of unsynced or deleted items.</p>
 
           <h3>5. Availability and changes</h3>
 
