@@ -5,10 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
   <meta name="theme-color" content="#050611">
-  <meta name="description" content="Playlist Studio brings YouTube links, imported audio files, and personal recordings together in one simple library.">
-  <title>Playlist Studio: Music Hub</title>
+  <meta name="description" content="Organize and play your audio, video, and recordings in personal playlists. Local processing, offline playback, and optional private iCloud sync.">
+  <title>Playlist Studio: Your Files</title>
 
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%23ff2d8d'/%3E%3Cstop offset='.52' stop-color='%23a53cff'/%3E%3Cstop offset='1' stop-color='%2300a9ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='15' fill='%23090b20'/%3E%3Cpath d='M26 17v29a7 7 0 1 1-4-6.3V22l27-6v24a7 7 0 1 1-4-6.3V12z' fill='url(%23g)'/%3E%3Ccircle cx='10' cy='22' r='2.5' fill='%23ff2d8d'/%3E%3Ccircle cx='10' cy='31' r='2.5' fill='%23a53cff'/%3E%3Ccircle cx='10' cy='40' r='2.5' fill='%2300a9ff'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/png" href="StudioMark.png">
+  <link rel="apple-touch-icon" href="StudioMark.png">
 
   <style>
     :root {
@@ -296,6 +297,7 @@
       width: min(65vw, 320px);
       height: min(65vw, 320px);
       object-fit: contain;
+      border-radius: 22%;
       filter: drop-shadow(0 25px 40px rgba(0, 0, 0, 0.45));
     }
 
@@ -700,7 +702,7 @@
   <header class="site-header">
     <nav class="nav" aria-label="Main navigation">
       <a class="brand" href="#top" aria-label="Playlist Studio home">
-        <img src="StudioMark.png" alt="" width="38" height="38">
+        <img src="StudioMark.png?v=your-files-49" alt="" width="38" height="38" style="border-radius:9px">
         <span>Playlist Studio</span>
       </a>
 
@@ -716,16 +718,16 @@
   <main id="main">
     <section id="top" class="shell hero" aria-labelledby="hero-title">
       <div>
-        <p class="eyebrow">YouTube links · Imports · Recordings</p>
+        <p class="eyebrow">Video · Audio · Recordings</p>
 
         <h1 id="hero-title">
-          Your Music. <span class="gradient-text">One Place.</span>
+          Your Files. <span class="gradient-text">One Place.</span>
         </h1>
 
         <p class="hero-copy">
-          Create personal playlists with music from different sources.
-          Add YouTube links, import audio files, or make your own recordings,
-          then organize everything in one simple Library.
+          Import your audio and video, or make your own recordings,
+          then organize everything into personal playlists and one simple Library.
+          Process files on your device and play locally saved files offline.
         </p>
 
         <div class="hero-actions">
@@ -736,8 +738,8 @@
 
       <div class="hero-art" aria-label="Playlist Studio app icon">
         <img
-          src="StudioMark.png"
-          alt="Playlist Studio colorful music note logo"
+          src="StudioMark.png?v=your-files-49"
+          alt="Playlist Studio app icon: two white rounded cards and a white Play symbol on a pink, purple, and blue gradient"
           width="320"
           height="320"
         >
@@ -749,105 +751,63 @@
         <div class="section-heading">
           <p class="eyebrow">Create your mix. Press play.</p>
           <h2 id="features-title">A personal library built your way.</h2>
-
-          <p>
-            Bring your sources together, keep playlists organized,
-            and play local audio in the background.
-          </p>
+          <p>Bring your audio, video, and recordings together. Keep playlists organized and enjoy files saved on your device, even offline.</p>
         </div>
-
         <div class="feature-grid">
           <article class="card">
-            <div class="card-icon source-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
-            <h3>Add YouTube links</h3>
-
-            <p>
-              Verify eligible videos, then save the link with its original YouTube title
-              directly to your playlists.
-            </p>
-          </article>
-
-          <article class="card">
-            <div class="card-icon source-icon source-icon-import" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v12m-4.5-4.5L12 15l4.5-4.5M4 12.5V21h16v-8.5"/></svg></div>
+            <div class="card-icon source-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M3 10v4m4-8v12m5-16v20m5-16v12m4-8v4"/></svg></div>
             <h3>Import audio files</h3>
-
-            <p>
-              Choose audio from Files. Processing happens on your device
-              and the imported copy stays in the app’s private storage.
-            </p>
+            <p>Choose audio from Files. Imported audio is processed locally and converted to M4A/AAC for your Library and playlists.</p>
           </article>
-
+          <article class="card">
+            <div class="card-icon source-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="2" y="5" width="14" height="14" rx="3"/><path d="m16 10 6-4v12l-6-4z" fill="currentColor" stroke="none"/></svg></div>
+            <h3>Import video files</h3>
+            <p>Add compatible MP4, MOV, and M4V files from Files. Videos are copied without re-encoding and played with Apple’s native player.</p>
+          </article>
           <article class="card">
             <div class="card-icon source-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="9" y="2.5" width="6" height="11.5" rx="3" fill="currentColor" stroke="none"/><path d="M6.5 10.5v1a5.5 5.5 0 0 0 11 0v-1M12 17v4m-3.2 0h6.4"/></svg></div>
             <h3>Make recordings</h3>
-
-            <p>
-              Record personal audio with your permission and place it
-              directly into your library and playlists.
-            </p>
+            <p>Record personal audio with your permission and save it directly to your Library and playlists.</p>
           </article>
-
           <article class="card">
-            <div class="card-icon" aria-hidden="true">≡</div>
+            <div class="card-icon source-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M8 6h13M8 12h13M8 18h13"/><circle cx="3" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="3" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="3" cy="18" r="1" fill="currentColor" stroke="none"/></svg></div>
             <h3>Organize simply</h3>
-
-            <p>
-              Search, reorder, and move songs between playlists.
-              Rename imported files and recordings. Play a full playlist whenever you are ready.
-            </p>
+            <p>Search, rename, reorder, and move files between playlists. Play a full playlist, repeat a favorite, or let the playlist start over after the last item.</p>
           </article>
-
           <article class="card">
-            <div class="card-icon" aria-hidden="true">♫</div>
-            <h3>Keep local audio playing</h3>
-
-            <p>
-              Imported files and personal recordings can continue
-              in the background and from the Lock Screen.
-            </p>
+            <div class="card-icon source-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="2" y="12" width="5" height="9" rx="2"/><rect x="17" y="12" width="5" height="9" rx="2"/></svg></div>
+            <h3>Keep audio playing</h3>
+            <p>Imported audio and personal recordings can continue in the background, with Lock Screen controls. Video pauses when the app moves to the background.</p>
           </article>
-
           <article class="card">
-            <div class="card-icon" aria-hidden="true">∞</div>
+            <div class="card-icon source-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 12c-3-5-9-5-9 0s6 5 9 0 9-5 9 0-6 5-9 0z"/></svg></div>
             <h3>One-time unlock</h3>
-
-            <p>
-              The free Library holds up to 50 songs. Unlock Unlimited Library
-              with one in-app purchase. No registration and no subscription.
-            </p>
+            <p>The free Library holds up to <strong>25 items in total</strong>, including audio, video, and recordings. Unlock Unlimited Library with one in-app purchase. No subscription.</p>
           </article>
         </div>
-
         <article class="card icloud-panel" aria-labelledby="icloud-title">
           <p class="eyebrow">Optional iCloud sync</p>
           <h3 id="icloud-title">Your library, ready for your next device.</h3>
-          <p>Keep your playlists, imported audio, and recordings in your private iCloud storage. Sync is on by default unless your previously saved choice is off. Your sync choice is saved in iCloud so it can be remembered after reinstalling or changing devices with the same iCloud account. You can change it anytime in <strong>Settings &gt; iCloud Library</strong>. A local copy of imported audio and recordings stays available offline.</p>
-          <p>After reinstalling or changing devices, sign in to the same iCloud account. If your last saved sync choice was on, your synced library downloads automatically while Playlist Studio is open. If it was off, it stays off until you enable it. Only data and sync choices that reached iCloud can be restored. This uses your iCloud storage and requires an internet connection. YouTube entries sync their links; YouTube playback still requires an internet connection.</p>
-          <p>The iCloud button next to Settings opens <strong>iCloud Library</strong>. A green cloud indicates successful sync. A red crossed cloud means sync is off; a red cloud with an exclamation mark means the sync state needs checking.</p>
+          <p>Keep your playlists, imported audio and video, and recordings in your private iCloud storage. Sync is on by default unless your previously saved choice is off. You can change it in <strong>Settings &gt; iCloud Library</strong>.</p>
+          <p>After reinstalling or changing devices, sign in to the same iCloud account. If your last saved choice was on, previously synced data downloads while the app is open and connected. If it was off, it stays off until you enable it. Only data and choices that finished syncing can be restored.</p>
+          <p>The cloud next to Settings opens <strong>iCloud Library</strong>. A blue cloud means sync is on; it is filled when the app has confirmed all current changes are synced. A gray crossed cloud means sync is off. Open iCloud Library to check progress or resolve a sync issue.</p>
+          <p>Sync needs internet and available iCloud storage. It may continue briefly after you leave the app, and iOS may allow later background runs. These opportunities are not continuous or guaranteed.</p>
         </article>
-
         <div class="truth-panel">
           <article class="card">
-            <h3>Designed with privacy in mind</h3>
-
+            <h3>Your files stay yours</h3>
+            <p>Your imported audio and video, recordings, and playlists are stored on your device. Files and recordings are processed locally. When iCloud sync is enabled and available, they also sync to your private iCloud storage.</p>
             <ul class="check-list">
-              <li>No Playlist Studio account</li>
-              <li>No developer analytics or tracking SDK</li>
-              <li>No ads served by Playlist Studio</li>
-              <li>Your library and audio are stored locally on your device</li>
+              <li>No separate app account</li>
+              <li>No ads, tracking, or usage analytics in the app</li>
+              <li>Local processing and storage on your device</li>
               <li>Optional sync to your private iCloud storage</li>
             </ul>
           </article>
-
           <article class="card">
-            <h3>About YouTube playback</h3>
-
-            <p>
-              YouTube playback requires an internet connection and a visible
-              player. Background playback is available for local audio, but not
-              for YouTube videos. Some videos must open in the YouTube app or
-              website because of YouTube or uploader restrictions.
-            </p>
+            <h3>Works offline</h3>
+            <p>Import files available on your device, record audio, organize playlists, and play locally saved audio and video without an internet connection.</p>
+            <p style="margin-top:14px">Syncing with iCloud and purchasing or restoring Unlimited Library require internet. Files stored only with a cloud provider must first be downloaded.</p>
           </article>
         </div>
       </div>
@@ -883,96 +843,60 @@
 
         <div class="faq">
           <details open>
-            <summary>Why does a YouTube video open outside the app?</summary>
-
-            <p>
-              The uploader may have disabled embedded playback, the video may
-              be marked as made for kids, or YouTube may otherwise restrict the
-              video. In those cases, Playlist Studio offers to open the official
-              YouTube app or website.
-            </p>
+            <summary>What can I add to my Library?</summary>
+            <p>Use <strong>Import Audio</strong> or <strong>Import Video</strong> to choose files from Files, or <strong>Record Audio</strong> to make a recording. Add saved items to one or more playlists using <strong>Add from Library</strong>.</p>
           </details>
-
           <details>
-            <summary>Why does YouTube playback stop in the background?</summary>
-
-            <p>
-              YouTube playback uses the official embedded player and stops when
-              the app is no longer visible. Return to Playlist Studio to resume
-              it. Imported audio files and personal recordings can continue
-              playing in the background.
-            </p>
+            <summary>Does Playlist Studio work without internet?</summary>
+            <p>Yes. Import files already available on your device, record audio, organize playlists, and play locally saved audio and video offline. iCloud sync and purchasing or restoring Unlimited Library need internet. Files stored only with a cloud provider must first be downloaded.</p>
           </details>
-
           <details>
-            <summary>Does Playlist Studio download YouTube audio or video?</summary>
-
-            <p>
-              No. Playlist Studio saves the link and uses YouTube’s official
-              player. It does not download, convert, extract, or create offline
-              copies of YouTube content.
-            </p>
+            <summary>Which video files can I import?</summary>
+            <p>Compatible MP4, MOV, and M4V files. Playback depends on the file’s codec and support on your device. Video is copied into private app storage without re-encoding. Protected or unsupported files cannot be imported.</p>
           </details>
-
+          <details>
+            <summary>Can audio and video play in the background?</summary>
+            <p>Imported audio and personal recordings can continue in the background and use Lock Screen controls. Video playback pauses when the app moves to the background.</p>
+          </details>
+          <details>
+            <summary>How does Repeat work?</summary>
+            <p>Playlists start over after the last item. You can also repeat the current item. A playlist or Library with a single item repeats it automatically.</p>
+          </details>
+          <details>
+            <summary>What is included for free?</summary>
+            <p>The free Library supports up to <strong>25 items in total</strong>: audio, video, and recordings. Unlimited Library removes that fixed limit through a one-time purchase, subject to device storage and normal technical limits.</p>
+          </details>
           <details>
             <summary>How do I restore Unlimited Library?</summary>
-
-            <p>
-              Open the Unlimited Library screen and choose
-              <strong>Restore Purchases</strong>. Use the same Apple ID that
-              made the original purchase. The purchase is non-consumable
-              and does not renew.
-            </p>
+            <p>Open Unlimited Library and choose <strong>Restore Purchases</strong>, using the same Apple ID that made the purchase and an internet connection. The purchase does not renew. Restoring this purchase is separate from restoring your files through iCloud.</p>
           </details>
-
           <details>
-            <summary>Where are my songs and playlists stored?</summary>
-
-            <p>
-              Your playlist data, imported copies, and recordings are stored
-              in Playlist Studio’s private app storage on your device. When
-              <strong>Sync with iCloud</strong> is enabled and iCloud is available, your
-              library also syncs to your private iCloud storage. Sync starts on unless
-              your previously saved choice is off. Appearance and playback preferences
-              remain local. Deleting the app normally removes its local container;
-              completed iCloud copies remain available for restoration with the same
-              account when sync is enabled.
-            </p>
+            <summary>Where are my files and playlists stored?</summary>
+            <p>Imported copies, recordings, and playlists are stored in Playlist Studio’s private storage on your device. With <strong>Sync with iCloud</strong> enabled and available, the Library also syncs to your private iCloud storage. Appearance and playback preferences remain local.</p>
           </details>
-
           <details>
             <summary>What does the iCloud button mean?</summary>
-            <p>Tap the cloud next to Settings to open <strong>iCloud Library</strong>. A green cloud means synchronization has succeeded. A red crossed cloud means sync is off. A red cloud with an exclamation mark means the app is still checking iCloud or synchronization needs attention; open iCloud Library to see the current status.</p>
+            <p>Tap the cloud next to Settings to open <strong>iCloud Library</strong>. Blue means sync is on; a filled blue cloud means the app has confirmed all current changes are synced. A gray crossed cloud means sync is off. The icon alone does not explain every connection issue; check the status inside iCloud Library.</p>
           </details>
-
           <details>
             <summary>How do I enable iCloud sync?</summary>
-            <p>iCloud sync is on by default unless your previously saved choice is off. To change it, tap the iCloud button next to Settings, or choose <strong>Settings &gt; iCloud Library</strong>, and use the <strong>Sync with iCloud</strong> switch. Sign in to iCloud in your device settings and make sure enough iCloud storage is available. Sync runs while Playlist Studio is active; check its status or choose <strong>Sync Now</strong> on the same screen.</p>
+            <p>Sync is on by default unless your previously saved choice is off. Tap the cloud next to Settings, or choose <strong>Settings &gt; iCloud Library</strong>, and use <strong>Sync with iCloud</strong>. Sign in to iCloud on your device and make sure enough iCloud storage is available. Check progress or choose <strong>Sync Now</strong> on that screen.</p>
           </details>
-
           <details>
-            <summary>How do I restore my library after reinstalling or changing devices?</summary>
-            <p>Sign in to the same iCloud account and open Playlist Studio. The app restores your last sync choice saved in iCloud. If it was on, previously synced songs, audio, and playlists download automatically while the app is open and connected. If it was off, it stays off; enable <strong>Sync with iCloud</strong> in <strong>iCloud Library</strong> when you want to restore your library. You can restore only data and sync choices that reached iCloud before you removed the app or changed devices. If iCloud is temporarily unavailable, your local library remains available and library transfers wait. Restoring an Unlimited Library purchase is a separate action through <strong>Restore Purchases</strong>.</p>
+            <summary>How do I restore my Library after reinstalling or changing devices?</summary>
+            <p>Sign in to the same iCloud account and open Playlist Studio while connected. The app restores your last saved sync choice. If it was on, previously synced audio, video, recordings, and playlists download automatically; if it was off, enable <strong>Sync with iCloud</strong> when you want to restore. Only data and choices that reached iCloud can be restored. If iCloud is unavailable, local files remain available and transfers wait.</p>
           </details>
-
           <details>
             <summary>What happens if I turn iCloud sync off?</summary>
-            <p>Library transfers stop, while your local library and existing iCloud copies are kept. Your sync choice is saved separately in iCloud, even while library sync is off, so the app can remember it after reinstalling or changing devices. A changed choice must reach iCloud before it can be restored elsewhere. New library changes remain on this device until you enable sync again. When sync is enabled, deletions also sync across devices. iCloud sync does not provide a version history or a way to undo synced deletions.</p>
+            <p>Library transfers stop, while local data and existing iCloud copies are kept. Your choice is saved separately in your private iCloud database, even while Library sync is off, so it can be remembered after reinstalling or changing devices. A changed choice must reach iCloud first. New changes wait until sync is enabled again; deletions also sync while enabled. iCloud sync does not provide a version history.</p>
           </details>
-
+          <details>
+            <summary>Does syncing continue after I leave the app?</summary>
+            <p>Sync may continue for a limited time after you leave the app or lock your device. iOS may also schedule later background opportunities, depending on system conditions. These runs are not continuous or guaranteed. Interrupted sync resumes when you return or iOS allows another run; an incomplete file may need to be transferred again.</p>
+          </details>
           <details>
             <summary>How do I delete my data?</summary>
-
-            <p>
-              Delete individual songs or playlists inside the app. To remove
-              the entire local library, delete Playlist Studio from the device.
-              Deletions made in the app also sync while iCloud sync is enabled.
-              Uninstalling alone does not delete completed iCloud copies. Manage
-              the app’s iCloud storage and any device backups in Apple’s settings.
-              You can also revoke microphone access in System Settings and
-              turn off <strong>Enable YouTube Services</strong> on Playlist
-              Studio’s Privacy screen.
-            </p>
+            <p>Delete items and playlists inside the app. Deletions also sync while iCloud sync is enabled and available. Deleting the app removes its local container but does not delete completed iCloud copies. Manage the app’s iCloud storage and device backups separately in Apple’s settings. You can revoke microphone permission in System Settings.</p>
           </details>
         </div>
       </div>
@@ -981,18 +905,18 @@
     <section id="privacy" class="section alt" aria-labelledby="privacy-title">
       <div class="shell legal-layout">
         <div class="sticky-intro">
-          <p class="eyebrow">Last updated November 12, 2026</p>
+          <p class="eyebrow">Last updated November 16, 2026</p>
           <h2 id="privacy-title">Privacy Policy</h2>
 
           <p>
-            This policy explains how Playlist Studio: Music Hub
+            This policy explains how Playlist Studio: Your Files
             and this website handle information.
           </p>
 
           <div class="legal-nav" aria-label="Privacy policy contents">
             <a href="#privacy-summary">Summary</a>
             <a href="#privacy-data">Data</a>
-            <a href="#privacy-youtube">YouTube</a>
+            <a href="#privacy-offline">Offline</a>
             <a href="#privacy-apple">Apple</a>
             <a href="#privacy-icloud">iCloud</a>
             <a href="#privacy-control">Your controls</a>
@@ -1001,13 +925,21 @@
         </div>
 
         <article class="legal-copy">
+          <div class="notice" aria-labelledby="privacy-local-title">
+            <h3 id="privacy-local-title" style="margin-top:0">Your files stay yours</h3>
+            <p>Your imported audio and video, recordings, and playlists are stored on your device. Files and recordings are processed locally. When Sync with iCloud is enabled and available, your Library and files also sync to your private iCloud storage.</p>
+            <p><strong>No ads, tracking, or usage analytics in the app. No separate app account is required.</strong></p>
+            <h4 id="privacy-offline">Works offline</h4>
+            <p>Import files available on your device, record audio, organize playlists, and play locally saved audio and video without an internet connection. Syncing with iCloud and purchasing or restoring Unlimited Library require internet. Files stored only with a cloud provider must first be downloaded.</p>
+          </div>
+
           <h3 id="privacy-summary">
             1. About this Privacy Policy
           </h3>
 
           <p>
             Playlist Studio is provided by Octavian Petrescu.
-            This policy covers the Playlist Studio: Music Hub app for iPhone and
+            This policy covers the Playlist Studio: Your Files app for iPhone and
             iPad, this support website, and support communications.
           </p>
 
@@ -1018,16 +950,7 @@
             </a>.
           </p>
 
-          <div class="notice">
-            <strong>At a glance:</strong> No account is required. Your library,
-            imported audio, and recordings are stored locally on your device.
-            iCloud sync also saves your library to your private iCloud storage
-            when enabled and available. It is on by default unless your previously
-            saved choice is off. You can turn it on or off in iCloud Library;
-            your sync choice is saved separately in iCloud for future installations.
-            Playlist Studio does not use developer-operated analytics or tracking.
-            Some features use third-party services, including YouTube and Apple, as explained below.
-          </div>
+
 
           <h3 id="privacy-data">
             2. Information processed on your device
@@ -1040,16 +963,12 @@
 
           <ul>
             <li>
-              playlist names, song titles, playlist order, search and library
+              playlist names, file titles, playlist order, search and library
               organization;
             </li>
 
             <li>
-              YouTube URLs or video identifiers and the original titles retrieved from YouTube;
-            </li>
-
-            <li>
-              audio files you import and local copies created by the app;
+              audio and video files you import and local copies created by the app;
             </li>
 
             <li>
@@ -1057,8 +976,7 @@
             </li>
 
             <li>
-              app preferences, including your YouTube Services choice;
-              and
+              app preferences, including appearance, playback, and your iCloud sync choice; and
             </li>
 
             <li>
@@ -1079,8 +997,7 @@
             You choose files through Apple’s system file picker. Playlist Studio
             accesses only the items you select. Selected audio may be converted
             on the device to M4A/AAC and copied into the app’s private storage
-            so it can be organized and played. The app does not scan unrelated
-            files.
+            so it can be organized and played. Compatible imported video is copied without re-encoding and played with Apple’s native player. The app does not scan unrelated files.
           </p>
 
           <h4>Microphone</h4>
@@ -1102,93 +1019,8 @@
             controls can work. This processing occurs through iOS or iPadOS.
           </p>
 
-          <h3 id="privacy-youtube">
-            3. YouTube API Services and embedded playback
-          </h3>
-
-          <p>
-            Playlist Studio uses YouTube API Services. By using the app’s
-            YouTube features, you also agree to the
-            <a
-              href="https://www.youtube.com/static?template=terms"
-              rel="noopener noreferrer"
-            >
-              YouTube Terms of Service
-            </a>.
-            Google’s handling of information is described in the
-            <a
-              href="https://policies.google.com/privacy"
-              rel="noopener noreferrer"
-            >
-              Google Privacy Policy
-            </a>.
-            You may also review the
-            <a
-              href="https://developers.google.com/youtube/terms/api-services-terms-of-service"
-              rel="noopener noreferrer"
-            >
-              YouTube API Services Terms of Service
-            </a>.
-          </p>
-
-          <h4>Information sent to and received from YouTube</h4>
-
-          <p>
-            Only after you enable YouTube Services, Playlist Studio sends a
-            video identifier to the YouTube Data API when it needs to verify a
-            link. The app retrieves the original video title, thumbnail,
-            category, embedding status, and whether the video is marked as made
-            for kids. It uses this information to show you the video being
-            added, warn about unexpected content, and determine whether
-            in-app playback is permitted.
-          </p>
-
-          <p>
-            The original title is displayed before you add the link and stored locally when you save it. Playlist Studio attempts to refresh the stored title through the YouTube Data API from day 25. If the stored title reaches 30 days without a successful refresh, the app replaces it with a generic label until a refresh succeeds. Thumbnails are displayed temporarily during verification and are not saved to your library.
-          </p>
-
-          <p>
-            When you play a saved YouTube link in the app, Playlist Studio loads
-            YouTube’s official IFrame Player in Privacy Enhanced Mode inside a
-            web view. Google or YouTube may receive information normally
-            involved in an internet, API, or embedded-player request, including
-            your IP address, device or browser characteristics, app or request
-            identifiers, local storage or cookie information, video identifiers,
-            and player interactions or playback information. Privacy Enhanced
-            Mode prevents a view in Playlist Studio from being used to
-            personalize your YouTube experience or advertising outside the app.
-            YouTube may still show non-personalized advertising, branding,
-            recommendations, or other content in the player under its policies.
-          </p>
-
-          <p>
-            Playlist Studio does not use Google or YouTube OAuth, does not ask
-            you to sign in to a Google account, and does not access your Google
-            profile, subscriptions, watch history, private videos, or other
-            authorized account data.
-          </p>
-
-          <h4>Consent and control</h4>
-
-          <p>
-            Before the app makes its first YouTube Data API request or loads the
-            embedded player, it presents the YouTube Services consent screen.
-            You can withdraw that permission at any time by turning off
-            <strong>Enable YouTube Services</strong> on the Privacy screen.
-            When disabled, Playlist Studio makes no new YouTube Data API or
-            embedded-player requests. Saved YouTube links remain stored locally
-            and can still be opened in the official YouTube app or website.
-          </p>
-
-          <p>
-            Playlist Studio does not download, convert, extract audio from,
-            or cache YouTube content for offline playback. Video availability
-            and playback are controlled by YouTube, the uploader, your region,
-            network conditions, and applicable YouTube restrictions.
-          </p>
-
           <h3 id="privacy-apple">
-            4. Apple services and in-app purchases
+            3. Apple services and in-app purchases
           </h3>
 
           <p>
@@ -1214,12 +1046,14 @@
           </p>
 
           <h4 id="privacy-icloud">iCloud Library</h4>
-          <p>Playlist Studio does not require a separate app account. When Sync with iCloud is enabled and iCloud is available, library data, imported audio, saved recordings, playlists, and playlist order sync to your private iCloud database, associated with the iCloud account signed in on your device. This uses your iCloud storage and requires an internet connection and sufficient available storage. A local copy of imported audio and recordings remains available for offline playback. Appearance and playback preferences remain on your device.</p>
-          <p>Sync with iCloud is on by default unless your previously saved choice is off. You can turn it on or off and check sync status anytime using the iCloud button next to Settings or Settings &gt; iCloud Library. Your sync choice is stored separately in your private iCloud database, including while library sync is off, so it can be remembered after reinstalling or changing devices with the same iCloud account. A changed choice must reach iCloud before it can be restored elsewhere. Existing sync choices are preserved when updating. Turning sync off stops library transfers without deleting your local library or copies already saved in iCloud.</p>
-          <p>After reinstalling or changing devices, sign in to the same iCloud account. The app applies your last sync choice saved in iCloud. If it was on, your synced library downloads automatically while the app is open; if it was off, it stays off until you enable Sync with iCloud in iCloud Library. Only data that finished syncing can be restored. If iCloud is unavailable, your local library remains available and library transfers wait until the saved choice can be checked. YouTube entries sync their saved links; temporary YouTube API title caches and thumbnails are not uploaded. Playback continues through YouTube and requires an internet connection.</p>
-          <p>Deletions also sync when Sync with iCloud is enabled and iCloud is available. Uninstalling the app removes its local container according to the operating system’s behavior, but does not delete completed iCloud copies. You can manage the app’s iCloud storage in device Settings. iCloud synchronization is separate from device backup and does not provide version history or recovery of unsynced or deleted items. Apple handles iCloud under its <a href="https://www.apple.com/legal/privacy/" rel="noopener noreferrer">Privacy Policy</a>.</p>
+          <p>Library data and local audio and video files sync to your private iCloud database, associated with the iCloud account signed in on your device. This uses your iCloud storage and requires an internet connection. A local copy remains available for offline playback.</p>
+          <p>After reinstalling or changing devices, sign in to the same iCloud account. The app restores your last sync choice saved in iCloud: if it was on, your synced Library downloads automatically while the app is open; if it was off, it stays off until you enable it in Settings &gt; iCloud Library. Only changes that finished syncing can be restored.</p>
+          <p>Sync with iCloud is on by default unless your previously saved choice is off. Your sync choice is stored separately in your private iCloud database, including when library sync is off, so it can be remembered after reinstalling or changing devices. A changed choice must reach iCloud before it can be restored elsewhere.</p>
+          <p>If iCloud is unavailable, your local Library remains available and library transfers wait. You can turn it on or off and check sync status anytime in Settings &gt; iCloud Library. Turning it off stops syncing without deleting the local Library or copies already saved in iCloud.</p>
+          <p>Sync may continue for a limited time after you leave the app or lock the device, and iOS may schedule later background opportunities. These opportunities are not continuous or guaranteed. Interrupted transfers resume on a later permitted run; an incomplete file may need to be transferred again.</p>
+          <p>Deletions also sync while sync is enabled and available. iCloud synchronization is separate from device backup and does not provide version history or guarantee recovery of unsynced or deleted items. Manage the app’s iCloud storage in device Settings.</p>
 
-          <h3>5. Information the developer may receive</h3>
+          <h3>4. Information the developer may receive</h3>
 
           <p>
             The developer does not receive your in-app library as described
@@ -1254,7 +1088,7 @@
             track you across apps or websites owned by other companies.
           </p>
 
-          <h3>6. This website</h3>
+          <h3>5. This website</h3>
 
           <p>
             This static website does not use an account system, contact form,
@@ -1267,7 +1101,7 @@
             destination’s privacy policy.
           </p>
 
-          <h3>7. How information is shared</h3>
+          <h3>6. How information is shared</h3>
 
           <p>
             We do not disclose your local library to third parties. Information
@@ -1276,10 +1110,6 @@
           </p>
 
           <ul>
-            <li>
-              to <strong>Google/YouTube</strong> for YouTube metadata
-              and playback;
-            </li>
 
             <li>
               to <strong>Apple</strong> for file selection, system media
@@ -1298,7 +1128,7 @@
           </ul>
 
           <p>
-            Apple, Google, YouTube, email providers, and website hosts process
+            Apple, email providers, and website hosts process
             information under their own terms and privacy policies and may
             process it in countries where they operate. Third parties that receive
             user information through Playlist Studio must provide the same or
@@ -1306,13 +1136,11 @@
             and required by applicable App Store rules and law.
           </p>
 
-          <h3>8. Legal bases</h3>
+          <h3>7. Legal bases</h3>
 
           <p>
             Where laws such as the GDPR require a legal basis, processing may
-            rely on: your consent for microphone access and YouTube Services,
-            including link verification, metadata retrieval, and embedded
-            playback; performance of the service you request when you import,
+            rely on: your consent for microphone access and optional iCloud synchronization; performance of the service you request when you import,
             organize, or play content; legitimate interests in responding to
             support requests and protecting the service; and compliance with
             legal obligations. You may withdraw consent through the controls
@@ -1320,7 +1148,7 @@
             processing.
           </p>
 
-          <h3>9. Retention, backups, and security</h3>
+          <h3>8. Retention, backups, and security</h3>
 
           <p>
             Local library information remains on your device until you delete
@@ -1350,12 +1178,12 @@
           </p>
 
           <h3 id="privacy-control">
-            10. Your choices and deletion controls
+            9. Your choices and deletion controls
           </h3>
 
           <ul>
             <li>
-              Delete songs and playlists from within Playlist Studio. Deletions
+              Delete files, recordings, and playlists from within Playlist Studio. Deletions
               also sync when Sync with iCloud is enabled and available.
             </li>
 
@@ -1376,23 +1204,13 @@
             </li>
 
             <li>
-              Turn off <strong>Enable YouTube Services</strong> on Playlist
-              Studio’s Privacy screen to stop new YouTube Data API and
-              embedded-player requests.
-            </li>
-
-            <li>
-              Stop using YouTube features or open YouTube externally instead.
-            </li>
-
-            <li>
               Contact us to request access to or deletion of information
               contained in your support correspondence.
             </li>
           </ul>
 
           <h3 id="privacy-rights">
-            11. Your privacy rights
+            10. Your privacy rights
           </h3>
 
           <p>
@@ -1420,19 +1238,16 @@
             produces legal or similarly significant effects.
           </p>
 
-          <h3>12. Children’s privacy</h3>
+          <h3>11. Children’s privacy</h3>
 
           <p>
             Playlist Studio is a general-audience organization and playback
             tool and is not directed to children under 13. We do not knowingly
-            collect personal information from children. YouTube videos marked
-            as made for kids are not played in the embedded player and are
-            opened externally, where YouTube’s rules and parental controls
-            apply. If you believe a child sent personal information in a
+            collect personal information from children. If you believe a child sent personal information in a
             support request, contact us so we can delete it.
           </p>
 
-          <h3>13. Changes to this policy</h3>
+          <h3>12. Changes to this policy</h3>
 
           <p>
             We may update this policy when features, providers, or legal
@@ -1441,7 +1256,7 @@
             communicated in the app or App Store listing when appropriate.
           </p>
 
-          <h3>14. Contact</h3>
+          <h3>13. Contact</h3>
 
           <p>
             Email:
@@ -1456,118 +1271,30 @@
     <section id="terms" class="section" aria-labelledby="terms-title">
       <div class="shell legal-layout">
         <div class="sticky-intro">
-          <p class="eyebrow">Last updated November 12, 2026</p>
+          <p class="eyebrow">Last updated November 16, 2026</p>
           <h2 id="terms-title">Terms of Use</h2>
-
-          <p>
-            Plain-language terms for using Playlist Studio
-            and its third-party features.
-          </p>
+          <p>Plain-language terms for using Playlist Studio.</p>
         </div>
-
         <article class="legal-copy">
           <h3>1. Agreement and license</h3>
-
-          <p>
-            By downloading or using Playlist Studio, you agree to these Terms
-            of Use, the Playlist Studio Privacy Policy, and Apple’s
-            <a
-              href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
-              rel="noopener noreferrer"
-            >
-              Standard Licensed Application End User License Agreement
-            </a>.
-            Subject to those terms, you receive a personal, limited, non-exclusive, 
-            non-transferable license to use the app on supported Apple devices you own or
-            control.
-          </p>
-
+          <p>By downloading or using Playlist Studio, you agree to these Terms of Use, the Playlist Studio Privacy Policy, and Apple’s <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Standard Licensed Application End User License Agreement</a>. Subject to those terms, you receive a personal, limited, non-exclusive, non-transferable license to use the app on supported Apple devices you own or control.</p>
           <h3>2. Your content and lawful use</h3>
-
-          <p>
-            You remain responsible for the audio, recordings, titles, links,
-            and playlists you add. Use content only as permitted by applicable
-            law and by the terms of the relevant service. Do not use Playlist
-            Studio to infringe copyright, privacy, publicity, or other rights; bypass
-            technical restrictions; distribute unlawful material; or interfere
-            with the app or third-party services.
-          </p>
-
-          <h3>3. YouTube</h3>
-
-          <p>
-            YouTube features are provided through YouTube API Services and the
-            official embedded player in Privacy Enhanced Mode. Before the app
-            accesses those services, it asks you to agree to the Privacy Policy
-            and YouTube Terms of Service. You can withdraw that permission from
-            the app’s Privacy screen. By using Playlist Studio’s YouTube features,
-            you agree to be bound by the
-            <a
-              href="https://www.youtube.com/static?template=terms"
-              rel="noopener noreferrer"
-            >
-              YouTube Terms of Service
-            </a>. Google’s handling of information is described in the
-            <a
-              href="https://policies.google.com/privacy"
-              rel="noopener noreferrer"
-            >
-              Google Privacy Policy
-            </a>.
-            
-            Playlist Studio does not download or convert YouTube content. YouTube playback requires an internet connection. We cannot guarantee that YouTube videos will remain available or
-            support embedded playback. Some videos may also be unavailable in your region. YouTube background playback is not supported by Playlist Studio.
-            YouTube may change, restrict, or discontinue its API services or embedded playback.
-          </p>
-
-          <h3>4. Unlimited Library purchase</h3>
-
-          <p>
-            The free Library supports up to 50 songs. Unlimited Library removes that fixed library limit through a one-time, non-consumable in-app purchase, 
-            subject to available device storage and normal technical limits. This purchase does not guarantee the continued availability of YouTube 
-            or any other third-party service. YouTube services are operated independently by YouTube and may change, become restricted, or be discontinued. The price and applicable taxes are shown by Apple before purchase and may vary by storefront. 
-            Purchases are processed by Apple and are subject to Apple’s applicable terms and policies. 
-            Use Restore Purchases with the same Apple ID to restore an eligible purchase.
-          </p>
-
-          <h3>iCloud Library</h3>
-          <p>iCloud sync is optional and on by default unless your previously saved choice is off. You can enable or disable it in Settings &gt; iCloud Library or open that screen using the iCloud button next to Settings. Your sync choice is saved separately in your private iCloud database, including while library sync is off. A changed choice must reach iCloud before it can be restored after reinstalling or changing devices. When enabled and available, sync transfers your library, imported audio, recordings, and playlists to your private iCloud storage. It requires an internet connection and sufficient iCloud storage. After reinstalling or changing devices, use the same iCloud account. The app applies your last sync choice saved in iCloud: if it was on, previously synced data downloads automatically while the app is open; if it was off, it stays off until you enable it. If iCloud is unavailable, your local library remains available and library transfers wait. Only data that finished syncing can be restored. YouTube entries sync their links, not offline copies of YouTube content. Turning sync off stops library transfers and preserves local data and existing iCloud copies; deletions also sync while enabled. iCloud sync does not provide a version history or guarantee recovery of unsynced or deleted items.</p>
-
+          <p>You remain responsible for the audio, video, recordings, titles, and playlists you add. Use content only as permitted by applicable law. Do not use Playlist Studio to infringe copyright, privacy, publicity, or other rights; bypass technical restrictions; distribute unlawful material; or interfere with the app.</p>
+          <h3>3. Unlimited Library purchase</h3>
+          <p>The free Library supports up to 25 items in total, including audio, video, and recordings. Unlimited Library removes that fixed library limit through a one-time, non-consumable in-app purchase, subject to available device storage and normal technical limits. The price and applicable taxes are shown by Apple before purchase and may vary by storefront. Purchases are processed by Apple and are subject to Apple’s applicable terms and policies. Use Restore Purchases with the same Apple ID to restore an eligible purchase.</p>
+          <h3>4. iCloud Library</h3>
+          <p>iCloud sync is optional and on by default unless your previously saved choice is off. You can enable or disable it in Settings &gt; iCloud Library. Your sync choice is saved separately in your private iCloud database, including when library sync is off. A changed choice must reach iCloud before it can be restored after reinstalling or changing devices. When enabled and available, it syncs your library, imported audio and video, recordings, and playlists to your private iCloud storage. It requires an internet connection and sufficient iCloud storage. After reinstalling or changing devices, use the same iCloud account. The app applies your last sync choice saved in iCloud. If it was on, previously synced data downloads automatically while the app is open; if it was off, it stays off until you enable it. If iCloud is unavailable, your local Library remains available and library transfers wait. Only data that finished syncing can be restored. Turning sync off preserves local data and existing iCloud copies; deletions also sync while enabled. iCloud sync does not provide a version history or guarantee recovery of unsynced or deleted items.</p>
+          <p>Sync may continue for a limited time after you leave the app or lock the device, and iOS may schedule later background sync opportunities. These opportunities are not continuous or guaranteed. Interrupted transfers resume on a later permitted run; an incomplete file may need to be transferred again.</p>
           <h3>5. Availability and changes</h3>
-
-          <p>
-            We may modify features for security, legal or compliance requirements,
-            compatibility, technical changes, or changes to third-party services.
-            Where required by law, we will communicate material changes that
-            negatively affect paid functionality, and applicable consumer rights
-            and remedies remain available. Operation may depend on your device,
-            operating system, storage, permissions, internet connection, and
-            third-party services. We do not promise that every external link or
-            third-party item will remain available.
-          </p>
-
+          <p>We may modify features for security, legal or compliance requirements, compatibility, technical changes, or changes to Apple services. Where required by law, we will communicate material changes that negatively affect paid functionality, and applicable consumer rights and remedies remain available. Operation may depend on your device, operating system, storage, permissions, internet connection, and Apple services.</p>
           <h3>6. Disclaimer and responsibility</h3>
-
-          <p>
-            To the extent permitted by law, the app and website are provided
-            “as is” and “as available.” We are not responsible for third-party
-            content or services, user-provided content, loss caused by
-            unsupported modifications, or failures outside our reasonable
-            control. Nothing in these terms excludes rights or remedies that
-            cannot legally be excluded under applicable consumer law.
-          </p>
-
-          <h3>7. Contact</h3>
-
-          <p>
-            For questions about these Terms, contact us at
-            <a href="mailto:tavistudio@yahoo.com?subject=Playlist%20Studio%20Terms">
-              tavistudio@yahoo.com
-            </a>.
-          </p>
+          <p>To the extent permitted by law, the app and website are provided “as is” and “as available.” We are not responsible for user-provided content, loss caused by unsupported modifications, or failures outside our reasonable control. Nothing in these terms excludes rights or remedies that cannot legally be excluded under applicable consumer law.</p>
+          <h3>7. Contact and Online Documents</h3>
+          <p>For questions about these Terms, contact us at <a href="mailto:tavistudio@yahoo.com?subject=Playlist%20Studio%20Terms">tavistudio@yahoo.com</a>.</p>
         </article>
       </div>
     </section>
+
   </main>
 
   <footer>
