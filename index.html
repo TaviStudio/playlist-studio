@@ -751,7 +751,7 @@
       <div class="shell">
         <div class="section-heading">
           <p class="eyebrow">Organize. Add your voice. Press play.</p>
-          <h2 id="features-title">A personal library built your way.</h2>
+          <h2 id="features-title">Playlists, made personal.</h2>
           <p>Import media, record a voice-over, and keep the finished mix alongside the original. Simple controls, local processing, and playlists for every moment.</p>
         </div>
         <div class="feature-grid">
@@ -865,7 +865,7 @@
           </details>
           <details>
             <summary>How do I start a Voice-over?</summary>
-            <p>Tap the filled microphone on the home screen, or choose <strong>Voice-over</strong> from an item menu in Library or a playlist. Choose audio or video, record your voice while it plays, then listen to the mix. Adjust the Voice and Original levels separately, or mute the original sound. Use headphones for a cleaner recording.</p>
+            <p>Tap the filled microphone on the home screen, or choose <strong>Voice-over</strong> from an item menu in Library or a playlist. Before recording, use the speaker in the playback bar if you want to mute the original sound. Tap the microphone to start recording and tap it again to stop. The speaker remains available during recording. When you listen to the mix, adjust <strong>Voice</strong> and <strong>Original</strong> separately; Mute/Unmute is now beside the <strong>Original</strong> slider. The slider stays active, and moving it above zero unmutes the original track without muting your recorded voice.</p>
           </details>
           <details>
             <summary>Will Voice-over replace my original?</summary>
@@ -873,7 +873,7 @@
           </details>
           <details>
             <summary>What is the difference between Save and Export in Studio?</summary>
-            <p><strong>Save</strong> adds or updates the finished mix in Library and keeps the editable session in <strong>Recent Sessions</strong> on this device. Saving does not use a free export. <strong>Export</strong> renders the mix with the current settings and opens the share sheet; it does not save those edits to Library. Saved sessions remain editable locally.</p>
+            <p><strong>Save</strong> adds or updates the finished mix in Library and keeps the editable session in <strong>Recent Sessions</strong> on this device. Saving does not use a free export. <strong>Export</strong> renders the mix with the current settings and opens the share sheet; it does not save those edits to Library. Saved sessions remain editable locally until removed through the session or Library deletion controls.</p>
           </details>
           <details>
             <summary>How do I export an item from Library or a playlist?</summary>
@@ -937,7 +937,7 @@
           </details>
           <details>
             <summary>How do I delete my data?</summary>
-            <p>Delete items and playlists inside the app. Deletions also sync while iCloud sync is enabled and available. Deleting a Library mix does not delete its separate editable Studio session or reset free export usage. Deleting the app removes its local container, including editable sessions, but does not delete completed iCloud copies. Manage the app’s iCloud storage and device backups separately in Apple’s settings. You can revoke microphone permission in System Settings.</p>
+            <p>Delete items and playlists inside the app. Library deletions also sync while iCloud sync is enabled and available. Deleting a saved Voice-over mix or its Library source removes associated sessions from <strong>Recent Sessions</strong>; their local source and voice copies are cleaned up the next time you open Voice-over. A session already open in Studio is kept while you work. You can also choose <strong>Delete Session</strong> in Recent Sessions. Removing an item only from a playlist keeps its session. Other Library items, exported files, and the completed export count are unchanged. If cleanup fails, use <strong>Retry Cleanup</strong> or reopen Voice-over. Deleting the app removes its local container but does not delete completed iCloud copies. Manage iCloud storage and device backups separately in Apple’s settings.</p>
           </details>
         </div>
       </div>
@@ -946,7 +946,7 @@
     <section id="privacy" class="section alt" aria-labelledby="privacy-title">
       <div class="shell legal-layout">
         <div class="sticky-intro">
-          <p class="eyebrow">Last updated November 17, 2026</p>
+          <p class="eyebrow">Last updated November 18, 2026</p>
           <h2 id="privacy-title">Privacy Policy</h2>
 
           <p>
@@ -1209,11 +1209,15 @@
           <p>
             Local Library information and editable Studio sessions remain on your
             device. You can delete Library items and playlists in the app.
-            Editable Studio sessions and their source and voice files are stored separately:
-            deleting a Library mix does not remove its session or source copies.
-            Use <strong>Delete Session</strong> in <strong>Recent Sessions</strong> to remove
-            an editable session and its local source and voice files. Mixes already
-            saved in Library and files you exported are kept.
+            Editable Studio sessions and their source and voice files are stored separately.
+            Deleting a saved Voice-over mix or its Library source removes associated sessions
+            from <strong>Recent Sessions</strong>. Their local source and voice copies are
+            cleaned up the next time you open Voice-over. A session already open in Studio
+            is kept while you work. You can also use <strong>Delete Session</strong> in
+            <strong>Recent Sessions</strong> to remove an editable session and its local files.
+            Removing an item only from a playlist keeps its session. Other Library items and
+            exported files are kept. If cleanup fails, its request is retained for retry;
+            use <strong>Retry Cleanup</strong> or reopen Voice-over.
             Removing the app removes its local container, including these sessions,
             according to the operating system’s behavior. The export count
             is kept in the device Keychain and a private local recovery copy excluded from backups, as described above. iOS or iPadOS backups may retain
@@ -1253,9 +1257,11 @@
 
             <li>
               Use <strong>Delete Session</strong> in <strong>Recent Sessions</strong> to remove
-              an editable session and its local source and voice files. Mixes already
-              saved in Library and exported files are kept. Deleting a session does not
-              reset the completed Voice-over export count.
+              an editable session and its local source and voice files. Deleting its saved
+              Library mix or Library source also removes it from Recents and schedules cleanup
+              of those local session copies when Voice-over opens. A session open in Studio
+              is kept while you work. Other Library items and exported files are kept.
+              Deleting a session does not reset the completed Voice-over export count.
             </li>
 
             <li>
